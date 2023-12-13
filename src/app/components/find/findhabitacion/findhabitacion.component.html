@@ -1,0 +1,32 @@
+<p-dialog header="Buscar Habitacion" [(visible)]="visibleBuscar" [style]="{width: '30vw'}">
+    <form action="" [formGroup]="formBuscarHabitacion">
+        <p-inputGroup class="mb-3">
+            <p-inputGroupAddon>
+                <i class="pi pi-user"></i>
+            </p-inputGroupAddon>
+            <input pInputText placeholder="Numero habitacion" formControlName="numHabit" />
+        </p-inputGroup>
+        <div>
+            <p-button label="Buscar" (onClick)="buscarHabitacion()"></p-button>
+        </div>
+    </form>
+</p-dialog>
+
+<p-dialog header="Habitacion" [(visible)]="visibleMostrar" [style]="{width: '40vw'}" [maximizable]="true">
+    <h4>
+        Tipo Habitacion:   {{habitacion.tipoHabitacion}}
+    </h4>
+    <h4>
+        Cantidad Huespedes:  {{habitacion.cantHuespedes}}
+    </h4>
+    <h4>
+        Precio:   {{habitacion.precio}}
+    </h4>
+
+</p-dialog>
+
+<p-dialog header="Error" [(visible)]="visibleByError" [style]="{width: '20vw'}">
+    <p font-bold>
+        Se han ingresado datos incorrectamente o faltan rellenar campos
+    </p>
+</p-dialog>

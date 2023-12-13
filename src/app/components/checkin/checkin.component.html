@@ -1,0 +1,84 @@
+<div class="flex-column">
+
+    <div class="flex justify-content-center align-items-center font-bold bg-pink-200 text-6xl
+    h-4rem shadow-5 fon text-pink-700 border-1 border-round mt-3">
+        CHECK- IN
+    </div>
+
+
+    <div class="flex justify-content-start align-items-center">
+        <div>
+            <h5>Ingrese dni del Cliente:</h5>
+            <form action="" [formGroup]="formDni">
+                <p-inputGroup>
+                    <p-inputGroupAddon>
+                        <i class="pi pi-user"></i>
+                    </p-inputGroupAddon>
+                    <input pInputText placeholder="Dni" formControlName="dni" />
+                </p-inputGroup>
+            </form>
+            <div class="mt-3 ml-7">
+                <p-button label="Aceptar" [outlined]="true" severity="help" (onClick)="mostrarCliente()"></p-button>
+            </div>
+        </div>
+        <div
+            class=" flex justify-content-center align-items-center font-light h-8rem w-19rem bg-white shadow-3 border-round ml-8 mt-3">
+            @if (cliente!=null) {
+            {{cliente.apellido}}
+            {{cliente.nombre}} <br><br>
+            {{cliente.telefono}}
+            }@else {
+            El dni es inexistente!
+            }
+        </div>
+        <div class="justify-content-center ml-7 mt-3">
+            <p-image src="https://cdn.wallpapersafari.com/61/75/Ymx59h.png" alt="Image" width="550"
+                height="120"></p-image>
+        </div>
+    </div>
+
+
+    <div class="flex-column justify-content-center h-30rem w-60rem surface-50 mt-5 border-round">
+        <div class="card flex justify-content-center align-items-center bg-pink-100 h-4rem w-3 border-round ml-2 mt-3">
+            <input class="h-2rem shadow-5 border-round ml-2" type="text" pInputText [(ngModel)]="value"
+                pTooltip="Cantidad de huespedes" placeholder="    Aqui huespedes">
+        </div>
+        <div class="mt-3 m-8">
+            <p-button label="Aceptar" [outlined]="true" severity="danger" (onClick)="mostrarHabitaciones()"></p-button>
+            <p-table [value]="habitaciones" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="caption"> Habitaciones disponibles </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>N° Hab</th>
+                        <th>Tipo</th>
+                        <th>Precio</th>
+                        <th>Seleccionar</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-habitacion>
+                    <tr>
+                        <td>{{ habitacion.nroHabitacion }}</td>
+                        <td>{{ habitacion.tipoHabitacion }}</td>
+                        <td>{{ habitacion.precio }}</td>
+                        <td><p-button icon="pi pi-heart" [rounded]="true" severity="help"
+                                (onClick)="checkIn(habitacion.nroHabitacion)"></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary"></ng-template>
+            </p-table>
+        </div>
+
+    </div>
+</div>
+<p-dialog header="Long Content" [(visible)]="visible" [maximizable]="true" [style]="{ width: '150vw', height: '700px' }">
+    <div class="mt-8">
+        Fecha de ingreso:
+        <p-calendar [(ngModel)]="dateIngreso" [showTime]="true" [showSeconds]="true"></p-calendar>
+    </div>
+    <div class="mt-5">
+        Fecha de salida:
+        <p-calendar [(ngModel)]="dateEgreso" [showTime]="true" [showSeconds]="true"></p-calendar>
+    </div>
+    <p-button class="mt-3" label="Terminar" severity="help" [rounded]="true" (onClick)="Terminar(cliente.id)"> </p-button>
+</p-dialog>

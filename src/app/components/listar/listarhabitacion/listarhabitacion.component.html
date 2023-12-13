@@ -1,0 +1,45 @@
+<p-dialog header="Habitaciones" [(visible)]="visible" (onHide)="close()" [style]="{width: '50vw'}" [maximizable]="true">
+    <p-table [value]="habitaciones" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>N°</th>
+                <th>TH</th>
+                <th>$</th>
+                <th>CH</th>
+                <th>FI</th>
+                <th>FE</th> 
+                <th>Cliente</th>   
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-habitacion>
+            <tr>
+                <td>{{ habitacion.id }}</td>
+                <td>{{ habitacion.nroHabitacion }}</td>
+                <td>{{ habitacion.tipoHabitacion }}</td>
+                <td>{{ habitacion.precio }}</td>
+                <td>{{ habitacion.cantHuespedes }}</td>
+                <td>{{ habitacion.fechaDeIngreso }}</td>
+                <td>{{ habitacion.fechaDeEgreso }}</td>  
+                <td><p-button icon="pi pi-eye" severity="succes" (onClick)="mostrarCliente(habitacion.id)"></p-button></td>
+                <td>{{ habitacion.cliente}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</p-dialog>
+
+<p-dialog header="Cliente" [(visible)]="visibleCliente" [style]="{width: '40vw'}">
+    <h4>
+        Apellido: {{this.cliente.apellido}}
+    </h4>
+    <h4>
+        Nombre: {{this.cliente.nombre}}
+    </h4>
+    <h4 font-bold>
+        Dni: {{this.cliente.dni}}
+    </h4>
+    <h4 font-bold>
+        Telefono:{{this.cliente.telefono}}
+    </h4>
+   
+</p-dialog>
