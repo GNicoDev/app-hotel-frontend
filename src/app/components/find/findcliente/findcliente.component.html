@@ -57,6 +57,7 @@
             </p-inputGroupAddon>
             <input pInputText placeholder="Cantidad de huespedes" formControlName="cantHuespedes" />
         </p-inputGroup>
+    </form>
         <p font-bold>Fecha Ingreso:</p>
         <div>
             <p-calendar [(ngModel)]="dateIngreso" [showTime]="true" [showSeconds]="true" [showIcon]="true"></p-calendar>
@@ -70,7 +71,6 @@
             <p-button class="mr-3" label="Terminar" (onClick)="Terminar()"></p-button>
             <p-button label="Volver" (onClick)="returnMain()"></p-button>
         </div>
-    </form>
 </p-dialog>
 
 <p-dialog header="Error" [(visible)]="visibleByError" [style]="{width: '20vw'}">

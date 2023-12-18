@@ -37,16 +37,16 @@ export class FindclienteComponent {
 
 
 
-  constructor(private fc: FormBuilder, private fcheck: FormBuilder, private servCliente: ServclienteService, 
+  constructor(private fbc: FormBuilder, private fcheck: FormBuilder, private servCliente: ServclienteService, 
     private servhotel: ServhotelService, private router: Router) {
 
-    this.formBuscarCliente = new FormGroup({
+    this.formBuscarCliente = fbc.group({
       apellidoForm: new FormControl('', [Validators.required]) 
     })
-
+ 
     this.formCheckIn = fcheck.group({
-      numHabit: new FormControl('', [Validators.required]),
-      cantHuespedes: new FormControl('', [Validators.required]),
+      numHabit: new FormControl('', [Validators.required]), 
+      cantHuespedes: new FormControl('', [Validators.required])
     })
 
     this.visibleBuscar = false
@@ -61,7 +61,7 @@ export class FindclienteComponent {
 
   buscarCliente() {
     if (this.formBuscarCliente.valid) {
-      this.apellido = this.formBuscarCliente.get('apellido')?.value
+      this.apellido = this.formBuscarCliente.get('apellidoForm')?.value
       this.servCliente.findBySurname(this.apellido).subscribe(data => {
         this.clientes = data
         this.visibleListar = true
