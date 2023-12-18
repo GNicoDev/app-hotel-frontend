@@ -37,11 +37,14 @@ export class FindclienteComponent {
 
 
 
-  constructor(private fc: FormBuilder, private servCliente: ServclienteService, private servhotel: ServhotelService, private router: Router) {
-    this.formBuscarCliente = fc.group({
-      apellido: new FormControl('', [Validators.required])
+  constructor(private fc: FormBuilder, private fcheck: FormBuilder, private servCliente: ServclienteService, 
+    private servhotel: ServhotelService, private router: Router) {
+
+    this.formBuscarCliente = new FormGroup({
+      apellidoForm: new FormControl('', [Validators.required]) 
     })
-    this.formCheckIn = fc.group({
+
+    this.formCheckIn = fcheck.group({
       numHabit: new FormControl('', [Validators.required]),
       cantHuespedes: new FormControl('', [Validators.required]),
     })

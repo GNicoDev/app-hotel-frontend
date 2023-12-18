@@ -6,6 +6,7 @@ import { DialogModule } from 'primeng/dialog';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 
+import { ImageModule } from 'primeng/image';
 import { MenuItem } from 'primeng/api';
 import { ServclienteService } from '../../services/servcliente/servcliente.service';
 import { Router } from '@angular/router';
@@ -17,7 +18,7 @@ import { ServhotelService } from '../../services/servhotel/servhotel.service';
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [ButtonModule, DialogModule, PanelMenuModule, InputGroupModule, InputGroupAddonModule, ReactiveFormsModule],
+  imports: [ButtonModule, DialogModule, PanelMenuModule, InputGroupModule, InputGroupAddonModule, ReactiveFormsModule, ImageModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })

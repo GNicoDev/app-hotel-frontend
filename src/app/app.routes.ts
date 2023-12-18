@@ -14,6 +14,7 @@ import { FindhabitacionComponent } from './components/find/findhabitacion/findha
 import { CheckinComponent } from './components/checkin/checkin.component';
 
 export const routes: Routes = [
+    {path : '', component: MainComponent},
     {path : 'listarClientes', component: ListarclienteComponent},
     {path : 'listarHabitaciones', component: ListarhabitacionComponent},
     {path : 'addCliente', component: AddclienteComponent},
