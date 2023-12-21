@@ -1,7 +1,8 @@
+
 <div>
-    <h1>Eliminar Cliente</h1>
+    <h1 class="text-green-900 text-6xl ml-3">Eliminar Cliente</h1>
 </div>
-<p-dialog header="Eliminar Cliente" [(visible)]="visible" [style]="{width: '30vw'}">
+<p-dialog header="Eliminar Cliente" [(visible)]="visible" (onHide)="close()" [style]="{width: '30vw'}">
     <form action="" [formGroup]="formDeleteCliente">
         <p-inputGroup>
             <p-inputGroupAddon>

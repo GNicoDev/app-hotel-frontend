@@ -1,16 +1,18 @@
 <div>
-    <h1>Eliminar Cliente</h1>
+    <h1 class="text-green-900 text-6xl ml-3">Eliminar Habitacion</h1>
 </div>
-<p-dialog header="Header" [(visible)]="visible" [style]="{width: '30vw'}">
+<div style="background-color: rgb(169, 232, 203);width:1200px; height:600px;"></div>
+
+<p-dialog header="Eliminar habitacion por id" [(visible)]="visible" (onHide)="close()" [style]="{width: '30vw'}">
     <form action="" [formGroup]="formDeleteHabit">
         <p-inputGroup>
             <p-inputGroupAddon>
                 <i class="pi pi-user"></i>
             </p-inputGroupAddon>
-            <input pInputText placeholder="Id cliente a eliminar" formControlName="id" />
+            <input pInputText placeholder="Id habitacion a eliminar" formControlName="id" />
         </p-inputGroup>
         <div class="mt-3">
-            <p-button label="Eliminar" (onClick)="deleteHabitacion()"></p-button>
+            <p-button class="mr-2" label="Eliminar" (onClick)="deleteHabitacion()"></p-button>
             <p-button label="Volver" (onClick)="close()"></p-button>
         </div>
     </form>

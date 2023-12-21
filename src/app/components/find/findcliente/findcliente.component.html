@@ -1,4 +1,4 @@
-<p-dialog header="Buscar Cliente por Apellido" [(visible)]="visibleBuscar" [style]="{width: '30vw'}">
+<p-dialog header="Buscar Cliente por Apellido" [(visible)]="visibleBuscar" (onHide)="close()" [style]="{width: '30vw'}">
     <form action="" [formGroup]="formBuscarCliente">
         <p-inputGroup class="mb-3">
             <p-inputGroupAddon>
@@ -12,7 +12,7 @@
     </form>
 </p-dialog>
 
-<p-dialog header="Clientes {{apellido}}" [(visible)]="visibleListar" [style]="{width: '50vw'}" [maximizable]="true">
+<p-dialog header="Clientes {{apellido}}" [(visible)]="visibleListar" (onHide)="close()" [style]="{width: '50vw'}" [maximizable]="true">
     <p-table [value]="clientes" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>
@@ -38,12 +38,12 @@
     </p-table>
 
     <div>
-        <p-button label="Volver" (onClick)="returnMain()"></p-button>
+        <p-button label="Volver" (onClick)="close()"></p-button>
     </div>
 
 </p-dialog>
 
-<p-dialog header="Check-in" [(visible)]="visibleCheckIn" [style]="{width: '50vw'}" [maximizable]="true">
+<p-dialog header="Check-in" [(visible)]="visibleCheckIn" (onHide)="close()" [style]="{width: '50vw'}" [maximizable]="true">
     <form action="" [formGroup]="formCheckIn">
         <p-inputGroup>
             <p-inputGroupAddon>
@@ -69,11 +69,11 @@
 
         <div class="mt-5">
             <p-button class="mr-3" label="Terminar" (onClick)="Terminar()"></p-button>
-            <p-button label="Volver" (onClick)="returnMain()"></p-button>
+            <p-button label="Volver" (onClick)="close()"></p-button>
         </div>
 </p-dialog>
 
-<p-dialog header="Error" [(visible)]="visibleByError" [style]="{width: '20vw'}">
+<p-dialog header="Error" [(visible)]="visibleByError" (onHide)="close()" [style]="{width: '20vw'}">
     <p font-bold>
         Algunos datos son incorrectos o faltan rellenar campos
     </p>

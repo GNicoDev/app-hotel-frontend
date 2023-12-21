@@ -101,7 +101,7 @@ export class FindclienteComponent {
   }
 
 
-  returnMain() {
+  close() {
     this.router.navigateByUrl('/')
   }
 }

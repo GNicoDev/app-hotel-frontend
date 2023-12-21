@@ -1,4 +1,4 @@
-<p-dialog header="Buscar Cliente a editar" [(visible)]="visibleBuscar" [style]="{width: '30vw'}">
+<p-dialog header="Buscar Cliente a editar" [(visible)]="visibleBuscar" (onHide)="close()" [style]="{width: '30vw'}">
     <form action="" [formGroup]="formBuscarCliente">
         <p-inputGroup class="mb-3">
             <p-inputGroupAddon>
