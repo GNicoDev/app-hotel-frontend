@@ -1,5 +1,5 @@
-<div class="flex-column">
 
+<div>
     <div class="flex justify-content-center align-items-center font-bold bg-pink-200 text-6xl
     h-4rem shadow-5 fon text-pink-700 border-1 border-round mt-3">
         CHECK- IN
@@ -39,7 +39,7 @@
 
 
     <div class="flex-column justify-content-center h-30rem w-60rem surface-50 mt-5 border-round">
-        <div class="card flex justify-content-center align-items-center bg-pink-100 h-4rem w-3 border-round ml-2 mt-3">
+        <div class=" flex justify-content-center align-items-center bg-pink-100 h-4rem w-3 border-round ">
             <input class="h-2rem shadow-5 border-round ml-2" type="text" pInputText [(ngModel)]="value"
                 pTooltip="Cantidad de huespedes" placeholder="    Aqui huespedes">
         </div>
@@ -60,7 +60,7 @@
                         <td>{{ habitacion.nroHabitacion }}</td>
                         <td>{{ habitacion.tipoHabitacion }}</td>
                         <td>{{ habitacion.precio }}</td>
-                        <td><p-button icon="pi pi-heart" [rounded]="true" severity="help"
+                        <td><p-button icon="pi pi-check" [rounded]="true" severity="help"
                                 (onClick)="checkIn(habitacion.nroHabitacion)"></p-button>
                         </td>
                     </tr>
