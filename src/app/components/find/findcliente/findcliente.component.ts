@@ -65,7 +65,7 @@ export class FindclienteComponent {
       this.servCliente.findBySurname(this.apellido).subscribe(data => {
         this.clientes = data
         this.visibleListar = true
-        this.visibleBuscar = false
+        //this.visibleBuscar = false
 
       })
     } else {
@@ -75,7 +75,7 @@ export class FindclienteComponent {
 
   checkIn(id: number) {
     this.visibleCheckIn = true
-    this.visibleListar = false
+    //this.visibleListar = false
     this.idCliente = id
   }
 

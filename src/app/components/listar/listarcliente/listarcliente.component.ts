@@ -24,17 +24,10 @@ export class ListarclienteComponent implements OnInit{
     this.visible=true
     this.servCliente.getClientes().subscribe((data: Cliente[])=>{
       this.clientes=data
-      this.returnMain()
     })
   }
 
-  returnMain(){
-    if(!this.visible){
+  close(){
       this.router.navigateByUrl('/')
-    }
-    else{
-      this.ngOnInit()
-    }
-
   }
 }

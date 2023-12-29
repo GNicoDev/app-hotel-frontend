@@ -1,4 +1,5 @@
-<p-dialog header="Buscar Habitacion a editar" [(visible)]="visibleBuscar" [style]="{width: '30vw'}">
+<div style="background-color: rgb(163, 234, 202);width:1200px; height:600px; border-radius: 8px;"></div>
+<p-dialog header="Buscar Habitacion a editar" [(visible)]="visibleBuscar" (onHide)="close()" [style]="{width: '30vw'}">
     <form action="" [formGroup]="formBuscarHabit">
         <p-inputGroup class="mb-3">
             <p-inputGroupAddon>
@@ -11,7 +12,7 @@
         </div>
     </form>
 </p-dialog>
-<p-dialog header="Editar Habitacion" [(visible)]="visibleEditar" [style]="{width: '50vw'}">
+<p-dialog header="Editar Habitacion" [(visible)]="visibleEditar" [style]="{width: '30vw'}">
     <form action="" [formGroup]="formEditarHabit">
         <p-inputGroup>
             <p-inputGroupAddon>

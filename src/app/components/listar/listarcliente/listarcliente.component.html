@@ -1,4 +1,7 @@
-<p-dialog header="Clientes" [(visible)]="visible" [style]="{width: '50vw'}" [maximizable]="true">
+<div style="background-color: rgb(157, 205, 135);width:1200px; height:600px; border-radius: 8px;">
+    <h1>Lista de Cliente</h1>
+</div>
+<p-dialog header="Clientes" [(visible)]="visible" (onHide)="close()" [style]="{width: '50vw'}" [maximizable]="true">
     <p-table [value]="clientes" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>

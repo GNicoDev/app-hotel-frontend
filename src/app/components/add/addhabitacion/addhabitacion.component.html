@@ -1,4 +1,6 @@
-<div style="background-color: rgb(179, 237, 210);width:1920px; height:600px;"></div>
+<div style="background-color: rgb(179, 237, 210);width:1200px; height:600px;">
+    <h1>Nuevo Habitacion</h1>
+</div>
 
 <p-dialog header="Nueva Habitacion" [(visible)]="visible" (onHide)="close()" [style]="{width: '40vw', height: '400px' }">
     <form action="" [formGroup]="formularioHabit">
@@ -8,25 +10,24 @@
             </p-inputGroupAddon>
             <input pInputText placeholder="Numero habitacion" formControlName ="numero"/>
         </p-inputGroup>
+        <p-inputGroup class="mb-4">            
+            <p-inputGroupAddon>
+                <i class="pi pi-dollar"></i>
+            </p-inputGroupAddon>
+            <input pInputText placeholder="Precio" formControlName ="precio"/>
+        </p-inputGroup>
+    </form>
         <div font-medium class="mt-4 mb-2">
             Tipo de Habitacion:
         </div>
         <div class="card flex justify-content-start mb-4">
             <p-dropdown [options]="tipoHabitaciones" placeholder="Tipo" [(ngModel)]="selectHabit" ></p-dropdown>
-        </div> 
-
-        <p-inputGroup class="mb-4">            
-            <p-inputGroupAddon>
-                <i class="pi pi-user"></i>
-            </p-inputGroupAddon>
-            <input pInputText placeholder="Precio" formControlName ="precio"/>
-        </p-inputGroup>
+        </div>
        
         <div class="mt-3">
             <p-button class="mr-2" label="Registrar" (onClick)="crearHabitacion()"></p-button>
             <p-button label="Volver" (onClick)="close()"></p-button>
-        </div>
-    </form>
+        </div>  
 </p-dialog>
 
 <p-dialog header="Error" [(visible)]="visibleByError" [style]="{width: '20vw'}">
