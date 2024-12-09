@@ -82,10 +82,10 @@ export class FindclienteComponent {
   Terminar() {
     if (this.formCheckIn.valid) {
       let habitacion = new Habitacion()
-      habitacion.nroHabitacion = this.formCheckIn.get('numHabit')?.value
-      habitacion.cantHuespedes = this.formCheckIn.get('cantHuespedes')?.value
-      habitacion.fechaDeIngreso = this.dateIngreso
-      habitacion.fechaDeEgreso = this.dateEgreso
+      habitacion.roomNumber = this.formCheckIn.get('numHabit')?.value
+      habitacion.guestCount = this.formCheckIn.get('cantHuespedes')?.value
+      habitacion.checkInDate = this.dateIngreso
+      habitacion.checkOutDate = this.dateEgreso
       this.servhotel.reservar(habitacion, this.idCliente).subscribe(data => {
         if (data == null)
           this.visibleByError = true

@@ -55,10 +55,10 @@ export class EditclienteComponent implements OnInit {
       this.servCliente.findById(this.id).subscribe(data => {
         cliente = data
         this.visibleEditar = true
-        this.formEditarCliente.get('nombre')?.patchValue(cliente.nombre)
-        this.formEditarCliente.get('apellido')?.patchValue(cliente.apellido)
-        this.formEditarCliente.get('dni')?.patchValue(cliente.dni)
-        this.formEditarCliente.get('telefono')?.patchValue(cliente.telefono)
+        this.formEditarCliente.get('nombre')?.patchValue(cliente.name)
+        this.formEditarCliente.get('apellido')?.patchValue(cliente.lastName)
+        this.formEditarCliente.get('dni')?.patchValue(cliente.passport)
+        this.formEditarCliente.get('telefono')?.patchValue(cliente.phone)
 
       })
     }else {
@@ -70,10 +70,10 @@ export class EditclienteComponent implements OnInit {
     
     if (this.formEditarCliente.valid) {
       let cliente = new Cliente()
-      cliente.nombre = this.formEditarCliente.get('nombre')?.value
-      cliente.apellido = this.formEditarCliente.get('apellido')?.value
-      cliente.dni = this.formEditarCliente.get('dni')?.value
-      cliente.telefono = this.formEditarCliente.get('telefono')?.value
+      cliente.name = this.formEditarCliente.get('nombre')?.value
+      cliente.lastName = this.formEditarCliente.get('apellido')?.value
+      cliente.passport = this.formEditarCliente.get('dni')?.value
+      cliente.phone = this.formEditarCliente.get('telefono')?.value
       this.servCliente.editCliente(cliente, this.id).subscribe(data => {
         this.visibleSuccess = true
         this.formEditarCliente.reset()

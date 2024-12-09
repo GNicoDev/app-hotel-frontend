@@ -39,6 +39,7 @@ export class FindhabitacionComponent {
       this.numHabitacion = this.formBuscarHabitacion.get('numHabit')?.value
       this.servHabit.findByNumber(this.numHabitacion).subscribe(data => {
       this.habitacion = data
+      console.log(this.habitacion)
         this.visibleMostrar = true
         this.visibleBuscar=false
       })

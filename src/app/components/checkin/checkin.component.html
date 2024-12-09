@@ -23,9 +23,9 @@
         <div
             class=" flex justify-content-center align-items-center font-light h-8rem w-19rem bg-white shadow-3 border-round ml-8 mt-3">
             @if (cliente!=null) {
-            {{cliente.apellido}}
-            {{cliente.nombre}} <br><br>
-            {{cliente.telefono}}
+            {{cliente.lastName}}
+            {{cliente.name}} <br><br>
+            {{cliente.phone}}
             }@else {
             El dni es inexistente!
             }
@@ -56,11 +56,11 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-habitacion>
                     <tr>
-                        <td>{{ habitacion.nroHabitacion }}</td>
-                        <td>{{ habitacion.tipoHabitacion }}</td>
-                        <td>{{ habitacion.precio }}</td>
+                        <td>{{ habitacion.roomNumber }}</td>
+                        <td>{{ habitacion.roomType }}</td>
+                        <td>{{ habitacion.pricePerNight }}</td>
                         <td><p-button icon="pi pi-check" [rounded]="true" severity="help"
-                                (onClick)="checkIn(habitacion.nroHabitacion)"></p-button>
+                                (onClick)="checkIn(habitacion.roomNumber)"></p-button>
                         </td>
                     </tr>
                 </ng-template>

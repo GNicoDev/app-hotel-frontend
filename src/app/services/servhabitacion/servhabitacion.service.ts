@@ -9,13 +9,13 @@ import { Observable, from } from 'rxjs';
 })
 export class ServhabitacionService {
 
-  Url='http://localhost:8080/hotel/habitaciones/';
+  Url='http://localhost:8080/hotel/rooms';
 
   constructor(private http : HttpClient ) { }
 
 //LISTAR Habitaciones
  getHabitaciones(){
-    return this.http.get<Habitacion[]>(this.Url + 'listar');
+    return this.http.get<Habitacion[]>(this.Url);
   } 
   
   /*getHabitaciones(): Observable<Habitacion[]> {
@@ -33,29 +33,29 @@ export class ServhabitacionService {
 
 //BUSCAR HABITACION POR ID
   findById(id: number){
-    return this.http.get<Habitacion>(this.Url + 'buscar/' + id)
+    return this.http.get<Habitacion>(this.Url + '/' + id)
   }
 
 //BUSCAR HABITACION POR NUMERO
   findByNumber( numero : number){
-    return this.http.get<Habitacion>(this.Url + 'buscarhabitacion/' + numero)
+    return this.http.get<Habitacion>(this.Url + '/number/' + numero)
   }
 
 //BUSCAR HABITACIONES DISPONIBLES SEGUN CANTIDAD DE HUESPEDES
   listAvailableRooms(cantHuespedes: number){
-    return this.http.get<Habitacion[]>(this.Url + 'listardisponibles/' + cantHuespedes)
+    return this.http.get<Habitacion[]>(this.Url + '/available/' + cantHuespedes)
   }  
 
 //GUARDAR HABITACION
   saveHabitacion(habitacion: Habitacion){
-    return this.http.post<Habitacion>(this.Url + 'guardar', habitacion , {
+    return this.http.post<Habitacion>(this.Url, habitacion , {
       observe : 'response'
     })
   }
 
 //ACTUALIZAR HABITACION
   editHabitacion(habitacion: Habitacion, id: number){
-    return this.http.post<Habitacion>(this.Url + 'actualizar/' + id, habitacion, {
+    return this.http.put<Habitacion>(this.Url + '/' + id, habitacion, {
       observe: 'response'
     })
   }

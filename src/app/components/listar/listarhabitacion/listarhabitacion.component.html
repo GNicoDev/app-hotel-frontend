@@ -18,12 +18,12 @@
         <ng-template pTemplate="body" let-habitacion>
             <tr>
                 <td>{{ habitacion.id }}</td>
-                <td>{{ habitacion.nroHabitacion }}</td>
-                <td>{{ habitacion.tipoHabitacion }}</td>
-                <td>{{ habitacion.precio }}</td>
-                <td>{{ habitacion.cantHuespedes }}</td>
-                <td>{{ habitacion.fechaDeIngreso }}</td>
-                <td>{{ habitacion.fechaDeEgreso }}</td>  
+                <td>{{ habitacion.roomNumber }}</td>
+                <td>{{ habitacion.roomType }}</td>
+                <td>{{ habitacion.pricePerNight }}</td>
+                <td>{{ habitacion.guestCount }}</td>
+                <td>{{ habitacion.checkInDate }}</td>
+                <td>{{ habitacion.checkOutDate }}</td>  
                 <td><p-button icon="pi pi-eye" severity="succes" (onClick)="mostrarCliente(habitacion.id)"></p-button></td>
                 <td>{{ habitacion.cliente}}</td>
             </tr>
@@ -33,16 +33,16 @@
 
 <p-dialog header="Cliente" [(visible)]="visibleCliente" [style]="{width: '40vw'}">
     <h4>
-        Apellido: {{this.cliente.apellido}}
+        Apellido: {{this.cliente.lastName}}
     </h4>
     <h4>
-        Nombre: {{this.cliente.nombre}}
+        Nombre: {{this.cliente.name}}
     </h4>
     <h4 font-bold>
-        Dni: {{this.cliente.dni}}
+        Dni: {{this.cliente.passport}}
     </h4>
     <h4 font-bold>
-        Telefono:{{this.cliente.telefono}}
+        Telefono:{{this.cliente.phone}}
     </h4>
    
 </p-dialog>

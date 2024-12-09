@@ -9,40 +9,41 @@ import { Observable, from } from 'rxjs';
 })
 export class ServclienteService {
 
-  Url='http://localhost:8080/hotel/clientes/';
+  Url='http://localhost:8080/hotel/customers';
 
   constructor(private http : HttpClient) { }
 
 //LISTAR CLIENTES
   getClientes(){
-    return this.http.get<Cliente[]>(this.Url + 'listar');
+    return this.http.get<Cliente[]>(this.Url);
   }
 
 //BUSCAR CLIENTE POR ID
   findById(id: number){
-    return this.http.get<Cliente>(this.Url + 'buscar/' + id)
+    return this.http.get<Cliente>(this.Url + '/' + id)
   }
 
 //BUSCAR CLIENTES POR APELLIDO  
   findBySurname( surname : string){
-    return this.http.get<Cliente[]>(this.Url + 'listarporapellido/' + surname)
+    return this.http.get<Cliente[]>(this.Url + '/lastname/' + surname)
   }
 
 //BUSCAR CLIENTE POR DNI
 findByDni(dni: number){
-  return this.http.get<Cliente>(this.Url + 'buscarpordni/' + dni)
+  return this.http.get<Cliente>(this.Url + '/passport/' + dni)
 }
 
 //GUARDAR CLIENTES
   saveCliente(cliente: Cliente){
-    return this.http.post<Cliente>(this.Url + 'guardar', cliente , {
+    return this.http.post<Cliente>(this.Url, cliente , {
       observe : 'response'
     })
   }
 
 //ACTUALIZAR CLIENTE
   editCliente(cliente: Cliente, id: number){
-    return this.http.post<Cliente>(this.Url + 'actualizar/' + id, cliente, {
+    console.log(cliente)
+    return this.http.put<Cliente>(this.Url + '/' + id, cliente, {
       observe: 'response'
     })
   }

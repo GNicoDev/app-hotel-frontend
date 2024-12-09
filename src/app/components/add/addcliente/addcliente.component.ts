@@ -46,10 +46,10 @@ export class AddclienteComponent implements OnInit {
   crearCliente() {
       if (this.formularioCliente.valid) {
         let cliente = new Cliente()
-        cliente.nombre = this.formularioCliente.get('nombre')?.value
-        cliente.apellido = this.formularioCliente.get('apellido')?.value
-        cliente.dni = this.formularioCliente.get('dni')?.value
-        cliente.telefono = this.formularioCliente.get('telefono')?.value
+        cliente.name = this.formularioCliente.get('nombre')?.value
+        cliente.lastName = this.formularioCliente.get('apellido')?.value
+        cliente.passport = this.formularioCliente.get('dni')?.value
+        cliente.phone = this.formularioCliente.get('telefono')?.value
         this.servCliente.saveCliente(cliente).subscribe(data => {
           this.visibleBySuccess=true
         })

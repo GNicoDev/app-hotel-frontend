@@ -44,9 +44,9 @@ export class AddhabitacionComponent {
   crearHabitacion() {
       if (this.formularioHabit.valid) {
         let habitacion = new Habitacion()
-        habitacion.nroHabitacion = this.formularioHabit.get('numero')?.value
-        habitacion.tipoHabitacion = this.selectHabit
-        habitacion.precio = this.formularioHabit.get('precio')?.value
+        habitacion.roomNumber = this.formularioHabit.get('numero')?.value
+        habitacion.roomType = this.selectHabit
+        habitacion.pricePerNight = this.formularioHabit.get('precio')?.value
         this.servHabit.saveHabitacion(habitacion).subscribe(data => {
           this.visibleBySuccess=true
           //this.router.navigateByUrl('/')

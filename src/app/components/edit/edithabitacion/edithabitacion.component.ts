@@ -53,9 +53,9 @@ export class EdithabitacionComponent {
         if (data != null) {
           habitacion = data
           this.visibleEditar = true
-          this.formEditarHabit.get('numero')?.patchValue(habitacion.nroHabitacion)
-          this.formEditarHabit.get('tipoHab')?.patchValue(habitacion.tipoHabitacion)
-          this.formEditarHabit.get('precio')?.patchValue(habitacion.precio)
+          this.formEditarHabit.get('numero')?.patchValue(habitacion.roomNumber)
+          this.formEditarHabit.get('tipoHab')?.patchValue(habitacion.roomType)
+          this.formEditarHabit.get('precio')?.patchValue(habitacion.pricePerNight)
         }else
           this.visibleByError=true
       })
@@ -68,9 +68,9 @@ export class EdithabitacionComponent {
 
     if (this.formEditarHabit.valid) {
       let habitacion = new Habitacion()
-      habitacion.nroHabitacion = this.formEditarHabit.get('numero')?.value
-      habitacion.tipoHabitacion = this.formEditarHabit.get('tipoHab')?.value
-      habitacion.precio = this.formEditarHabit.get('precio')?.value
+      habitacion.roomNumber = this.formEditarHabit.get('numero')?.value
+      habitacion.roomType = this.formEditarHabit.get('tipoHab')?.value
+      habitacion.pricePerNight = this.formEditarHabit.get('precio')?.value
 
       this.servHabit.editHabitacion(habitacion, this.id).subscribe(data => {
         this.visibleSuccess = true

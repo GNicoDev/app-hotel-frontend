@@ -54,6 +54,7 @@ export class CheckinComponent {
       this.servcliente.findByDni(this.dni).subscribe(data => {
         this.cliente = data
         this.idCliente = this.cliente.id
+        console.log(this.idCliente)
       })
     }
   }
@@ -68,16 +69,17 @@ export class CheckinComponent {
 
   checkIn(nroHabitacion: number) {
     this.visible = true
+    console.log(nroHabitacion)
     this.servhabit.findByNumber(nroHabitacion).subscribe(data => {
       this.habitacion = data
-      this.habitacion.cantHuespedes = this.value
+      this.habitacion.guestCount = this.value
     })
   }
 
   Terminar(idCliente: number) {
     if ((this.dateIngreso != null) && (this.dateEgreso != null)) {
-      this.habitacion.fechaDeIngreso = this.dateIngreso
-      this.habitacion.fechaDeEgreso = this.dateEgreso
+      this.habitacion.checkInDate = this.dateIngreso
+      this.habitacion.checkOutDate = this.dateEgreso
       this.servhotel.reservar(this.habitacion, idCliente).subscribe(Data => {
         this.formDni.reset()
         this.value = undefined
