@@ -62,9 +62,7 @@ export class ServhabitacionService {
 
 //BORRAR HABITACION
   deleteHabitacion(id : number){
-    return this.http.post<Boolean>(this.Url + 'borrar/' + id, {
-      observe: 'response'
-    })
+    return this.http.delete<Boolean>(this.Url + '/' + id)
   }
 
 }

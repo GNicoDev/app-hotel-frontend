@@ -50,8 +50,6 @@ findByDni(dni: number){
 
 //BORRAR CLIENTE
   deleteCliente(id : number){
-   return this.http.post<Boolean>(this.Url + 'borrar/' + id, {
-      observe: 'response'
-    })
+   return this.http.delete<Boolean>(this.Url + '/' + id)
   }
 }
