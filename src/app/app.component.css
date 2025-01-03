@@ -1,6 +1,5 @@
 body{
-    background-color: rgb(182, 210, 182);
-    background-size:cover;
-    border-radius: 10px;
-    
+    background-image: url(../assets/fondo.png);
+    background-size:cover;    
+    background-repeat: no-repeat;
 }

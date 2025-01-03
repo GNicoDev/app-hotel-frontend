@@ -7,14 +7,13 @@ import { EditclienteComponent } from './components/edit/editcliente/editcliente.
 import { EdithabitacionComponent } from './components/edit/edithabitacion/edithabitacion.component';
 import { DeleteclienteComponent } from './components/delete/deletecliente/deletecliente.component';
 import { DeletehabitacionComponent } from './components/delete/deletehabitacion/deletehabitacion.component';
-import { MainComponent } from './components/main/main.component';
-import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
 import { FindclienteComponent } from './components/find/findcliente/findcliente.component';
 import { FindhabitacionComponent } from './components/find/findhabitacion/findhabitacion.component';
 import { CheckinComponent } from './components/checkin/checkin.component';
 
 export const routes: Routes = [
-    {path : '', component: MainComponent},
+    {path : '', component: HomeComponent},
     {path : 'listarClientes', component: ListarclienteComponent},
     {path : 'listarHabitaciones', component: ListarhabitacionComponent},
     {path : 'addCliente', component: AddclienteComponent},

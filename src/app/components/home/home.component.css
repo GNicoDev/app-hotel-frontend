@@ -1,0 +1,51 @@
+
+.spacer {
+    flex: 1 1 auto;
+    opacity: 0.5;
+
+  }
+
+  .menu{
+    opacity: 0.7;
+  }
+
+  .logo { 
+    height: 50px; /* Ajusta la altura del logo según tus necesidades */ 
+    margin-right: 16px; /* Espacio entre el logo y el nombre del hotel */ 
+    border-radius: 5px;
+}
+
+footer{
+  display: flex;
+  position: fixed;
+  bottom: 60px;
+  margin-left: 100px;
+}
+
+.date{
+  margin-right: 50px;
+  background-color: aliceblue;
+  border-radius: 5px;
+  padding: 10px;
+  opacity: 0.8;
+}
+
+.btn-find{
+  border-radius: 20px; 
+  color: rgb(69, 68, 68) !important; 
+  padding: 10px 20px;
+  margin-top: 30px;
+  background-color:aliceblue !important;
+  opacity: 0.8;
+}
+
+.btn-find:hover{
+  background-color:rgb(178, 191, 202) !important;
+  transition: 0.6s;
+  box-shadow: 3px 3px 3px #7c7c7c;
+}
+  
+.input-guestCount{
+  margin: 20px 35px 0px 0px;
+  opacity: 0.8;
+}

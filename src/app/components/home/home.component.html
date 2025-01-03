@@ -1,0 +1,49 @@
+<nav>
+  <mat-toolbar color="primary" class="menu">
+    <span>HOTEL</span>
+    <span class="spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu">Menú</button>
+    <mat-menu #menu="matMenu" class="menu">
+      <button mat-menu-item>Clientes</button>
+      <button mat-menu-item>Habitaciones</button>
+      <button mat-menu-item>Reservas</button>
+      <button mat-menu-item>Configuración</button>
+    </mat-menu>
+    <button mat-button>Iniciar Sesión</button>
+  </mat-toolbar>
+</nav>
+
+<main>
+
+</main>
+
+<footer>
+  <div class="date">
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker1">
+      <mat-hint>Check-in</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="date">
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker2">
+      <mat-hint>Check-out</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="input-guestCount">
+      <mat-label>Guest count</mat-label>
+      <input matInput value="0">
+    </mat-form-field>
+  </div>
+  <div class="example-button-row">
+    <a mat-raised-button href="" target="_blank" class="btn-find">Find Rooms</a>
+  </div>
+
+</footer>
