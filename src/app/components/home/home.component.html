@@ -1,25 +1,28 @@
-<nav>
-  <mat-toolbar color="primary" class="menu">
-    <span>HOTEL</span>
-    <span class="spacer"></span>
-    <button mat-button [matMenuTriggerFor]="menu">Menú</button>
-    <mat-menu #menu="matMenu" class="menu">
-      <button mat-menu-item [matMenuTriggerFor]="clientesMenu">Clientes</button>
-      <button mat-menu-item>Habitaciones</button>
-      <button mat-menu-item>Reservas</button>
-    </mat-menu>
-    <button mat-button>Iniciar Sesión</button>
-  </mat-toolbar>
-</nav>
+<section>
+  <div class="date">
+    <mat-form-field>
+      <mat-label>Select a date range</mat-label>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate [(ngModel)]="startDate">
+        <input matEndDate [(ngModel)]="endDate">>
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
 
-<!-- Submenú para Clientes -->
-<mat-menu #clientesMenu="matMenu">
-  <button mat-menu-item>Crear</button>
-  <button mat-menu-item>Listar</button>
-  <button mat-menu-item>Editar</button>
-  <button mat-menu-item>Eliminar</button>
-</mat-menu>
-<main>
+  </div>
+  <div>
+    <mat-form-field class="input-guestCount">
+      <mat-label>Guest count</mat-label>
+      <input matInput value="0" [(ngModel)]="guestCount">
+    </mat-form-field>
+  </div>
+  <div class="example-button-row">
+    <a mat-raised-button href="" target="_blank" (click)="findRooms($event)" class="btn-find">Find Rooms</a>
+  </div>
+
+</section>
   <div *ngIf="availableRooms.length > 0" class="container">
     <table mat-table [dataSource]="availableRooms" class="mat-elevation-z8">
 
@@ -49,30 +52,4 @@
     </table>
 
   </div>
-</main>
 
-<footer>
-  <div class="date">
-    <mat-form-field>
-      <mat-label>Select a date range</mat-label>
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate [(ngModel)]="startDate">
-        <input matEndDate [(ngModel)]="endDate">>
-      </mat-date-range-input>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-    </mat-form-field>
-
-  </div>
-  <div>
-    <mat-form-field class="input-guestCount">
-      <mat-label>Guest count</mat-label>
-      <input matInput value="0" [(ngModel)]="guestCount">
-    </mat-form-field>
-  </div>
-  <div class="example-button-row">
-    <a mat-raised-button href="" target="_blank" (click)="findRooms($event)" class="btn-find">Find Rooms</a>
-  </div>
-
-</footer>

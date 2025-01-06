@@ -1,4 +1,6 @@
 <body>
-    <router-outlet></router-outlet>
+    <app-header></app-header>
+    <main [ngClass]="{'container': hasContent}">
+        <router-outlet></router-outlet>
+    </main>
 </body>
-

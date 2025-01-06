@@ -1,0 +1,24 @@
+<header>
+<nav>
+    <mat-toolbar color="primary" class="menu">
+      <span>HOTEL</span>
+      <span class="spacer"></span>
+      <button mat-button [matMenuTriggerFor]="menu">Menú</button>
+      <mat-menu #menu="matMenu" class="menu">
+        <button mat-menu-item [matMenuTriggerFor]="clientesMenu">Clientes</button>
+        <button mat-menu-item>Habitaciones</button>
+        <button mat-menu-item>Reservas</button>
+      </mat-menu>
+      <button mat-button>Iniciar Sesión</button>
+    </mat-toolbar>
+  </nav>
+  
+  <!-- Submenú para Clientes -->
+  <mat-menu #clientesMenu="matMenu">
+    <button mat-menu-item>Crear</button>
+    <button mat-menu-item>Listar</button>
+    <button mat-menu-item>Editar</button>
+    <button mat-menu-item>Eliminar</button>
+  </mat-menu>
+
+</header>

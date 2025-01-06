@@ -1,21 +1,6 @@
 
-.spacer {
-    flex: 1 1 auto;
-    opacity: 0.5;
 
-  }
-
-  .menu{
-    opacity: 0.7;
-  }
-
-  .logo { 
-    height: 50px; /* Ajusta la altura del logo según tus necesidades */ 
-    margin-right: 16px; /* Espacio entre el logo y el nombre del hotel */ 
-    border-radius: 5px;
-}
-
-footer{
+section{
   display: flex;
   position: fixed;
   bottom: 60px;
