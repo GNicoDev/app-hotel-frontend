@@ -7,7 +7,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { ServhabitacionService } from '../../../services/servhabitacion/servhabitacion.service';
 import { Router } from '@angular/router';
-import { Habitacion } from '../../../modells/habitacion';
+import { Room } from '../../../modells/room';
 
 @Component({
   selector: 'app-edithabitacion',
@@ -47,15 +47,15 @@ export class EdithabitacionComponent {
 
   buscarHabitacion() {
     if (this.formBuscarHabit.valid) {
-      let habitacion = new Habitacion()
+      let room = new Room()
       this.id = this.formBuscarHabit.get('id')?.value
       this.servHabit.findById(this.id).subscribe(data => {
         if (data != null) {
-          habitacion = data
+          room = data
           this.visibleEditar = true
-          this.formEditarHabit.get('numero')?.patchValue(habitacion.roomNumber)
-          this.formEditarHabit.get('tipoHab')?.patchValue(habitacion.roomType)
-          this.formEditarHabit.get('precio')?.patchValue(habitacion.pricePerNight)
+          this.formEditarHabit.get('numero')?.patchValue(room.roomNumber)
+          this.formEditarHabit.get('tipoHab')?.patchValue(room.roomType)
+          this.formEditarHabit.get('precio')?.patchValue(room.pricePerNight)
         }else
           this.visibleByError=true
       })
@@ -67,12 +67,12 @@ export class EdithabitacionComponent {
   editarHabitacion() {
 
     if (this.formEditarHabit.valid) {
-      let habitacion = new Habitacion()
-      habitacion.roomNumber = this.formEditarHabit.get('numero')?.value
-      habitacion.roomType = this.formEditarHabit.get('tipoHab')?.value
-      habitacion.pricePerNight = this.formEditarHabit.get('precio')?.value
+      let room = new Room()
+      room.roomNumber = this.formEditarHabit.get('numero')?.value
+      room.roomType = this.formEditarHabit.get('tipoHab')?.value
+      room.pricePerNight = this.formEditarHabit.get('precio')?.value
 
-      this.servHabit.editHabitacion(habitacion, this.id).subscribe(data => {
+      this.servHabit.editHabitacion(room, this.id).subscribe(data => {
         this.visibleSuccess = true
         this.formEditarHabit.reset()
         this.formBuscarHabit.reset()

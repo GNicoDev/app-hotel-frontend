@@ -1,6 +1,6 @@
 import { Cliente } from "./cliente"
 
-export class Habitacion{
+export class Room{
     id!: number
     guestCount?:number
     roomType!:string

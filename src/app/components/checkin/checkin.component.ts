@@ -11,7 +11,7 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { TooltipModule } from 'primeng/tooltip';
 import { TableModule } from 'primeng/table';
 
-import { Habitacion } from '../../modells/habitacion';
+import { Room } from '../../modells/room';
 import { ServhabitacionService } from '../../services/servhabitacion/servhabitacion.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -29,12 +29,12 @@ import { ServhotelService } from '../../services/servhotel/servhotel.service';
 })
 export class CheckinComponent {
 
-  habitaciones: Habitacion[] = []
+  rooms: Room[] = []
   formDni: FormGroup
   cliente: Cliente
   dni: number = 0
   value: number | undefined
-  habitacion: Habitacion = new Habitacion()
+  room: Room = new Room()
   idCliente: number | undefined
   visible: boolean = false
   dateIngreso: Date = new Date()
@@ -62,7 +62,7 @@ export class CheckinComponent {
   mostrarHabitaciones() {
     if ((this.value != null) && (this.formDni.valid)) {
       this.servhabit.listAvailableRooms(this.value).subscribe(data => {
-        this.habitaciones = data
+        this.rooms = data
       })
     }
   }
@@ -71,16 +71,16 @@ export class CheckinComponent {
     this.visible = true
     console.log(nroHabitacion)
     this.servhabit.findByNumber(nroHabitacion).subscribe(data => {
-      this.habitacion = data
-      this.habitacion.guestCount = this.value
+      this.room = data
+      this.room.guestCount = this.value
     })
   }
 
   Terminar(idCliente: number) {
     if ((this.dateIngreso != null) && (this.dateEgreso != null)) {
-      this.habitacion.checkInDate = this.dateIngreso
-      this.habitacion.checkOutDate = this.dateEgreso
-      this.servhotel.reservar(this.habitacion, idCliente).subscribe(Data => {
+      this.room.checkInDate = this.dateIngreso
+      this.room.checkOutDate = this.dateEgreso
+      this.servhotel.reservar(this.room, idCliente).subscribe(Data => {
         this.formDni.reset()
         this.value = undefined
         this.router.navigateByUrl('/')

@@ -8,7 +8,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { TableModule } from 'primeng/table';
 import { ServhabitacionService } from '../../../services/servhabitacion/servhabitacion.service';
-import { Habitacion } from '../../../modells/habitacion';
+import { Room } from '../../../modells/room';
 @Component({
   selector: 'app-findhabitacion',
   standalone: true,
@@ -22,7 +22,7 @@ export class FindhabitacionComponent {
   visibleByError: boolean
   formBuscarHabitacion: FormGroup
   numHabitacion: number = 0
-  habitacion: Habitacion = new Habitacion()
+  room: Room = new Room()
 
 
   constructor(private fh: FormBuilder, private servHabit: ServhabitacionService ){
@@ -38,8 +38,8 @@ export class FindhabitacionComponent {
     if (this.formBuscarHabitacion.valid) {
       this.numHabitacion = this.formBuscarHabitacion.get('numHabit')?.value
       this.servHabit.findByNumber(this.numHabitacion).subscribe(data => {
-      this.habitacion = data
-      console.log(this.habitacion)
+      this.room = data
+      console.log(this.room)
         this.visibleMostrar = true
         this.visibleBuscar=false
       })

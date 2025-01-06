@@ -13,7 +13,7 @@ import { TableModule } from 'primeng/table';
 import { ServclienteService } from '../../../services/servcliente/servcliente.service';
 import { Router } from '@angular/router';
 import { Cliente } from '../../../modells/cliente';
-import { Habitacion } from '../../../modells/habitacion';
+import { Room } from '../../../modells/room';
 import { ServhotelService } from '../../../services/servhotel/servhotel.service';
 @Component({
   selector: 'app-findcliente',
@@ -81,12 +81,12 @@ export class FindclienteComponent {
 
   Terminar() {
     if (this.formCheckIn.valid) {
-      let habitacion = new Habitacion()
-      habitacion.roomNumber = this.formCheckIn.get('numHabit')?.value
-      habitacion.guestCount = this.formCheckIn.get('cantHuespedes')?.value
-      habitacion.checkInDate = this.dateIngreso
-      habitacion.checkOutDate = this.dateEgreso
-      this.servhotel.reservar(habitacion, this.idCliente).subscribe(data => {
+      let room = new Room()
+      room.roomNumber = this.formCheckIn.get('numHabit')?.value
+      room.guestCount = this.formCheckIn.get('cantHuespedes')?.value
+      room.checkInDate = this.dateIngreso
+      room.checkOutDate = this.dateEgreso
+      this.servhotel.reservar(room, this.idCliente).subscribe(data => {
         if (data == null)
           this.visibleByError = true
         else {

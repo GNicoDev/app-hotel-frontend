@@ -9,7 +9,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { ServhabitacionService } from '../../../services/servhabitacion/servhabitacion.service';
 import { Router } from '@angular/router';
-import { Habitacion } from '../../../modells/habitacion';
+import { Room } from '../../../modells/room';
 
 @Component({
   selector: 'app-addhabitacion',
@@ -43,7 +43,7 @@ export class AddhabitacionComponent {
 
   crearHabitacion() {
       if (this.formularioHabit.valid) {
-        let habitacion = new Habitacion()
+        let habitacion = new Room()
         habitacion.roomNumber = this.formularioHabit.get('numero')?.value
         habitacion.roomType = this.selectHabit
         habitacion.pricePerNight = this.formularioHabit.get('precio')?.value

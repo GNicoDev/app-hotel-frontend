@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Habitacion } from '../../modells/habitacion';
+import { Room } from '../../modells/room';
 import { HttpClient } from '@angular/common/http';
 import { Cliente } from '../../modells/cliente';
 
@@ -15,14 +15,14 @@ export class ServhotelService {
 
 
 //RESEVAR HABITACION
-  reservar(habitacion: Habitacion, id: number){
-    return this.http.post<Habitacion>(this.Url + '/rooms/' + id + '/reservation', habitacion, {
+  reservar(room: Room, id: number){
+    return this.http.post<Room>(this.Url + '/rooms/' + id + '/reservation', room, {
       observe: 'response'
     })
   }
 
   checkOut(numero: number){
-    return this.http.post<Habitacion>(this.Url + '/rooms/' + numero + '/checkout', {
+    return this.http.post<Room>(this.Url + '/rooms/' + numero + '/checkout', {
       observe: 'response'
     })
   }

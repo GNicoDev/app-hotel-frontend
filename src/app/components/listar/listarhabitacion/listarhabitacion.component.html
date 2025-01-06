@@ -2,7 +2,7 @@
     <h1>Lista de Habitaciones</h1>
 </div>
 <p-dialog header="Habitaciones" [(visible)]="visible" (onHide)="close()" [style]="{width: '50vw'}" [maximizable]="true">
-    <p-table [value]="habitaciones" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table [value]="rooms" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>
                 <th>ID</th>
@@ -15,17 +15,17 @@
                 <th>Cliente</th>   
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-habitacion>
+        <ng-template pTemplate="body" let-room>
             <tr>
-                <td>{{ habitacion.id }}</td>
-                <td>{{ habitacion.roomNumber }}</td>
-                <td>{{ habitacion.roomType }}</td>
-                <td>{{ habitacion.pricePerNight }}</td>
-                <td>{{ habitacion.guestCount }}</td>
-                <td>{{ habitacion.checkInDate }}</td>
-                <td>{{ habitacion.checkOutDate }}</td>  
-                <td><p-button icon="pi pi-eye" severity="succes" (onClick)="mostrarCliente(habitacion.id)"></p-button></td>
-                <td>{{ habitacion.cliente}}</td>
+                <td>{{ room.id }}</td>
+                <td>{{ room.roomNumber }}</td>
+                <td>{{ room.roomType }}</td>
+                <td>{{ room.pricePerNight }}</td>
+                <td>{{ room.guestCount }}</td>
+                <td>{{ room.checkInDate }}</td>
+                <td>{{ room.checkOutDate }}</td>  
+                <td><p-button icon="pi pi-eye" severity="succes" (onClick)="mostrarCliente(room.id)"></p-button></td>
+                <td>{{ room.cliente}}</td>
             </tr>
         </ng-template>
     </p-table>

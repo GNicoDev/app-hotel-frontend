@@ -5,7 +5,7 @@ import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 
 import { ServhabitacionService } from '../../../services/servhabitacion/servhabitacion.service';
-import { Habitacion } from '../../../modells/habitacion';
+import { Room } from '../../../modells/room';
 import { Router } from '@angular/router';
 import { Cliente } from '../../../modells/cliente';
 import { ServhotelService } from '../../../services/servhotel/servhotel.service';
@@ -22,14 +22,14 @@ export class ListarhabitacionComponent {
   visibleCliente: boolean = false
   id: number = 0
   cliente: Cliente = new Cliente()
-  habitaciones: Habitacion[]=[]
+  rooms: Room[]=[]
 
   constructor (private servHabitacion: ServhabitacionService, private servhotel: ServhotelService, private router: Router){ }
  
   ngOnInit(): void {
     this.visible=true
     this.servHabitacion.getHabitaciones().subscribe(data=>{
-      this.habitaciones=data
+      this.rooms=data
     })
   }
 

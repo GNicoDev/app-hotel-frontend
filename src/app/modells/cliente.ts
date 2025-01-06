@@ -1,4 +1,4 @@
-import { Habitacion } from "./habitacion"
+import { Room } from "./room"
 
 export class Cliente{
     id!: number
@@ -6,5 +6,5 @@ export class Cliente{
     name?:string
     lastName?:string
     phone?:string
-    rooms? : [Habitacion]
+    rooms? : [Room]
 }

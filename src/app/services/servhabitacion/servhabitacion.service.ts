@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Habitacion } from '../../modells/habitacion';
+import { Room } from '../../modells/room';
 import { Observable, from } from 'rxjs';
 
 
@@ -15,7 +15,7 @@ export class ServhabitacionService {
 
 //LISTAR Habitaciones
  getHabitaciones(){
-    return this.http.get<Habitacion[]>(this.Url);
+    return this.http.get<Room[]>(this.Url);
   } 
   
   /*getHabitaciones(): Observable<Habitacion[]> {
@@ -33,29 +33,29 @@ export class ServhabitacionService {
 
 //BUSCAR HABITACION POR ID
   findById(id: number){
-    return this.http.get<Habitacion>(this.Url + '/' + id)
+    return this.http.get<Room>(this.Url + '/' + id)
   }
 
 //BUSCAR HABITACION POR NUMERO
   findByNumber( numero : number){
-    return this.http.get<Habitacion>(this.Url + '/number/' + numero)
+    return this.http.get<Room>(this.Url + '/number/' + numero)
   }
 
 //BUSCAR HABITACIONES DISPONIBLES SEGUN CANTIDAD DE HUESPEDES
-  listAvailableRooms(cantHuespedes: number){
-    return this.http.get<Habitacion[]>(this.Url + '/available/' + cantHuespedes)
+  listAvailableRooms(guestCount: number){
+    return this.http.get<Room[]>(this.Url + '/available/' + guestCount)
   }  
 
 //GUARDAR HABITACION
-  saveHabitacion(habitacion: Habitacion){
-    return this.http.post<Habitacion>(this.Url, habitacion , {
+  saveHabitacion(room: Room){
+    return this.http.post<Room>(this.Url, room , {
       observe : 'response'
     })
   }
 
 //ACTUALIZAR HABITACION
-  editHabitacion(habitacion: Habitacion, id: number){
-    return this.http.put<Habitacion>(this.Url + '/' + id, habitacion, {
+  editHabitacion(room: Room, id: number){
+    return this.http.put<Room>(this.Url + '/' + id, room, {
       observe: 'response'
     })
   }
