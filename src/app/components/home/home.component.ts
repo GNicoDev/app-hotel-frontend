@@ -25,7 +25,7 @@ import { ServhabitacionService } from '../../services/servhabitacion/servhabitac
   providers: [provideNativeDateAdapter()],
   imports: [CommonModule, FormsModule,MatTableModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule,
     MatFormFieldModule, MatInputModule, MatDatepickerModule, MatDividerModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -45,13 +45,10 @@ export class HomeComponent {
 
   findRooms(event: Event) { 
     event.preventDefault(); // Evita que el enlace navegue a otra página 
-    /*this.servRoom.listAvailableRooms(this.guestCount).subscribe((rooms: Room[]) => { 
-      this.availableRooms = rooms; });
-    }*/
-   this.availableRooms = [
-    {id: 1, roomNumber: 206, roomType: 'Doble', pricePerNight: 21.5},
-    {id: 2, roomNumber: 376, roomType: 'Triple', pricePerNight: 45.65},
-    {id: 3, roomNumber: 116, roomType: 'Cuadruple', pricePerNight: 80.3}
-  ];
-  }
+    this.servRoom.listAvailableRooms(this.guestCount).subscribe((rooms: Room[]) => { 
+      this.availableRooms = rooms;
+      console.log(this.availableRooms)
+     });
+     
+    }
 }
