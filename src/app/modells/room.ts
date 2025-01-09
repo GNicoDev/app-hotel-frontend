@@ -1,7 +1,7 @@
 import { Cliente } from "./cliente"
 
 export class Room{
-    id!: number
+    id?: number
     guestCount?:number
     roomType!:string
     roomNumber!: number

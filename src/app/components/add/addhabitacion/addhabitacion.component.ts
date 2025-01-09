@@ -47,7 +47,7 @@ export class AddhabitacionComponent {
         habitacion.roomNumber = this.formularioHabit.get('numero')?.value
         habitacion.roomType = this.selectHabit
         habitacion.pricePerNight = this.formularioHabit.get('precio')?.value
-        this.servHabit.saveHabitacion(habitacion).subscribe(data => {
+        this.servHabit.saveRoom(habitacion).subscribe(data => {
           this.visibleBySuccess=true
           //this.router.navigateByUrl('/')
         })

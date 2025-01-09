@@ -1,0 +1,17 @@
+.form-field {
+  display: block;
+  margin-bottom: 16px;
+  width: 300px;
+}
+
+.btn-create {
+  margin: 0px 0px 20px 50px
+}
+
+.created-room {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9
+}

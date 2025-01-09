@@ -47,10 +47,12 @@ export class ServhabitacionService {
   }  
 
 //GUARDAR HABITACION
-  saveHabitacion(room: Room){
+  saveRoom(room: Room){
+    console.log(room)
     return this.http.post<Room>(this.Url, room , {
       observe : 'response'
     })
+    
   }
 
 //ACTUALIZAR HABITACION
