@@ -16,7 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 
 
 import { Room } from '../../modells/room';
-import { ServhabitacionService } from '../../services/servhabitacion/servhabitacion.service';
+import { ServRoomService } from '../../services/servroom/servroom.service';
 
 
 @Component({
@@ -37,7 +37,7 @@ export class HomeComponent {
   displayedColumns: string[] = ['roomNumber', 'roomType', 'pricePerNight'];
 
 
-  constructor(private servRoom: ServhabitacionService) {
+  constructor(private servRoom: ServRoomService) {
     this.startDate = new Date();
     this.endDate = new Date();
     this.guestCount = 0;

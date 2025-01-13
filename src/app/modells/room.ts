@@ -1,4 +1,4 @@
-import { Cliente } from "./cliente"
+import { Customer } from "./customer"
 
 export class Room{
     id?: number
@@ -8,5 +8,5 @@ export class Room{
     checkInDate?: Date
     checkOutDate?: Date
     pricePerNight!: number
-    customer?: Cliente
+    customer?: Customer
 }

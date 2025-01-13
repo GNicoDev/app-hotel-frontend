@@ -1,0 +1,34 @@
+<header>
+<nav>
+    <mat-toolbar color="primary" class="menu">
+      <span>HOTEL</span>
+      <span class="spacer"></span>
+      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+      <mat-menu #menu="matMenu" class="menu">
+        <button mat-menu-item [routerLink]="['/']">Home</button>
+        <button mat-menu-item [matMenuTriggerFor]="clientMenu">Clients</button>
+        <button mat-menu-item [matMenuTriggerFor]="roomsMenu">Rooms</button>
+        <button mat-menu-item>Book</button>
+      </mat-menu>
+      <button mat-button>Login</button>
+    </mat-toolbar>
+  </nav>
+  
+  <!-- Submenú para Clientes -->
+  <mat-menu #clientMenu="matMenu">
+    <button mat-menu-item>Create</button>
+    <button mat-menu-item>List</button>
+    <button mat-menu-item>Edit</button>
+    <button mat-menu-item>Delete</button>
+  </mat-menu>
+
+  <!-- Submenú para Habitaciones -->
+    <mat-menu #roomsMenu="matMenu"> 
+      <button mat-menu-item [routerLink]="['/create-room']">Create</button> 
+      <button mat-menu-item [routerLink]="['/list-rooms']">List</button> 
+      <button mat-menu-item [routerLink]="['/edit-room']">Edit</button> 
+      <button mat-menu-item [routerLink]="['/delete-room']">Delete</button> 
+      <button mat-menu-item [routerLink]="['/find-room']">Find by Number</button> 
+    </mat-menu>
+
+</header>

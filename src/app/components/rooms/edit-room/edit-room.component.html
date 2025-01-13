@@ -1,0 +1,36 @@
+<section>
+  <h2>Edit Room</h2>
+  <form (ngSubmit)="saveChanges()" class="form-edit">
+    <mat-form-field class="form-field">
+      <mat-label>Room ID</mat-label>
+      <input matInput [(ngModel)]="room.id" name="roomId" placeholder="Enter Room ID" required>
+      <button mat-raised-button color="primary" type="button" (click)="loadRoomData()">Select Room</button>
+    </mat-form-field>
+
+<!-- Show the form only when room data is loaded -->
+     <div *ngIf="roomLoaded">
+      <mat-form-field class="form-field">
+        <mat-label>Room Number</mat-label>
+        <input matInput [(ngModel)]="room.roomNumber" name="roomNumber" required>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Room Type</mat-label>
+        <mat-select [(ngModel)]="room.roomType" name="roomType" required>
+          <mat-option value="Single">Single</mat-option>
+          <mat-option value="Double">Double</mat-option>
+          <mat-option value="Triple">Triple</mat-option>
+          <mat-option value="Quadruple">Quadruple</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Price per Night</mat-label>
+        <input matInput [(ngModel)]="room.pricePerNight" name="pricePerNight" required>
+      </mat-form-field>
+      <div class="btn-save">
+        <button mat-raised-button color="primary" type="submit">Save Changes</button>
+      </div>
+    </div>
+  </form>
+</section>
+
+  

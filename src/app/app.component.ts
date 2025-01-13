@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, Router } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +18,7 @@ export class AppComponent {
 
   onActivate(event: any): void {
     this.hasContent = !!event; // Actualiza hasContent según si hay un componente activo
-    this.isHomeRoute = this.router.url === '/'; // Verifica si estamos en la ruta de inicio
+    this.isHomeRoute = this.router.url === '/'; // Check if we are on the home route
+
   }
 }
