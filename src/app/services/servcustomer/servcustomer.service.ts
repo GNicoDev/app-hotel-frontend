@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Cliente } from '../../modells/customer';
+import { Customer } from '../../modells/customer';
 import { Observable, from } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServclienteService {
+export class ServCustomerService {
 
   Url='http://localhost:8080/hotel/customers';
 
@@ -15,35 +15,35 @@ export class ServclienteService {
 
 //LISTAR CLIENTES
   getClientes(){
-    return this.http.get<Cliente[]>(this.Url);
+    return this.http.get<Customer[]>(this.Url);
   }
 
 //BUSCAR CLIENTE POR ID
   findById(id: number){
-    return this.http.get<Cliente>(this.Url + '/' + id)
+    return this.http.get<Customer>(this.Url + '/' + id)
   }
 
 //BUSCAR CLIENTES POR APELLIDO  
   findBySurname( surname : string){
-    return this.http.get<Cliente[]>(this.Url + '/lastname/' + surname)
+    return this.http.get<Customer[]>(this.Url + '/lastname/' + surname)
   }
 
 //BUSCAR CLIENTE POR DNI
 findByDni(dni: number){
-  return this.http.get<Cliente>(this.Url + '/passport/' + dni)
+  return this.http.get<Customer>(this.Url + '/passport/' + dni)
 }
 
 //GUARDAR CLIENTES
-  saveCliente(cliente: Cliente){
-    return this.http.post<Cliente>(this.Url, cliente , {
+  saveCliente(customer: Customer){
+    return this.http.post<Customer>(this.Url, customer , {
       observe : 'response'
     })
   }
 
 //ACTUALIZAR CLIENTE
-  editCliente(cliente: Cliente, id: number){
-    console.log(cliente)
-    return this.http.put<Cliente>(this.Url + '/' + id, cliente, {
+  editCliente(customer: Customer, id: number){
+    console.log(customer)
+    return this.http.put<Customer>(this.Url + '/' + id, customer, {
       observe: 'response'
     })
   }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Room } from '../../modells/room';
 import { HttpClient } from '@angular/common/http';
-import { Cliente } from '../../modells/customer';
+import { Customer } from '../../modells/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class ServhotelService {
   }
 
   returnClientRoom(idHabitacion: number){
-    return this.http.get<Cliente>(this.Url + '/rooms/' + idHabitacion + '/customer')
+    return this.http.get<Customer>(this.Url + '/rooms/' + idHabitacion + '/customer')
   }
 
 }

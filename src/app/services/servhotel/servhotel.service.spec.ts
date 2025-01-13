@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 import { ServhotelService } from './servhotel.service';
 
 describe('ServhotelService', () => {
   let service: ServhotelService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [ HttpClientModule ], // Asegúrate de importar HttpClientModule aquí
+      providers: [ ServhotelService ] // Proporciona el servicio aquí
+    });
     service = TestBed.inject(ServhotelService);
   });
 
@@ -14,3 +17,4 @@ describe('ServhotelService', () => {
     expect(service).toBeTruthy();
   });
 });
+

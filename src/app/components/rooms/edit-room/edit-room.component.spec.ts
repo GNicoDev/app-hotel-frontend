@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importa BrowserAnimationsModule
+import { HttpClientModule } from '@angular/common/http';
 import { EditRoomComponent } from './edit-room.component';
+import { ServRoomService } from '../../../services/servroom/servroom.service'; 
 
 describe('EditRoomComponent', () => {
   let component: EditRoomComponent;
@@ -8,7 +10,8 @@ describe('EditRoomComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EditRoomComponent]
+      imports: [ BrowserAnimationsModule, HttpClientModule, EditRoomComponent ], // Asegúrate de importar BrowserAnimationsModule aquí
+      providers: [ ServRoomService ] // Proporciona el servicio aquí
     })
     .compileComponents();
     
