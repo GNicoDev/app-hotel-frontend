@@ -11,7 +11,7 @@
      <div *ngIf="roomLoaded">
       <mat-form-field class="form-field">
         <mat-label>Room Number</mat-label>
-        <input matInput [(ngModel)]="room.roomNumber" name="roomNumber" required>
+        <input matInput [(ngModel)]="room.roomNumber" name="roomNumber" type="number" required>
       </mat-form-field>
       <mat-form-field class="form-field">
         <mat-label>Room Type</mat-label>
@@ -24,7 +24,7 @@
       </mat-form-field>
       <mat-form-field class="form-field">
         <mat-label>Price per Night</mat-label>
-        <input matInput [(ngModel)]="room.pricePerNight" name="pricePerNight" required>
+        <input matInput [(ngModel)]="room.pricePerNight" name="pricePerNight" type="number" required>
       </mat-form-field>
       <div class="btn-save">
         <button mat-raised-button color="primary" type="submit">Save Changes</button>

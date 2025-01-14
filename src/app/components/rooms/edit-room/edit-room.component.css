@@ -8,17 +8,3 @@
   margin: 0px 0px 20px 50px
 }
 
-.centered-snackbar {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.success.container {
-  background: #4caf50 !important;
-  color: #fff !important;
-}

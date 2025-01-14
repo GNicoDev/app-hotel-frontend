@@ -1,5 +1,4 @@
 <body>
-  <h1>Hello, {{ title }}</h1>
     <app-header></app-header>
     <main [ngClass]="{'container': hasContent && !isHomeRoute}">
       <router-outlet (activate)="onActivate($event)"></router-outlet>

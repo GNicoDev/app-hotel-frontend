@@ -1,0 +1,13 @@
+<section>
+    <h2>Delete Room</h2>
+    <form (ngSubmit)="deleteRoom()" class="form-edit">
+      <mat-form-field class="form-field">
+        <mat-label>Room ID</mat-label>
+        <input matInput [(ngModel)]="room.id" name="roomId" placeholder="Enter Room ID" required type="number">
+      </mat-form-field>
+      <div class="btn-delete">
+      <button mat-raised-button color="primary" type="submit">Delete Room</button>
+    </div>
+    </form>
+  </section>
+  

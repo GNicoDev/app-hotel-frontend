@@ -43,6 +43,7 @@ export class ServRoomService {
 
 //BUSCAR HABITACIONES DISPONIBLES SEGUN CANTIDAD DE HUESPEDES
   listAvailableRooms(guestCount: number){
+    console.log(guestCount)
     return this.http.get<Room[]>(this.Url + '/available/' + guestCount)
   }  
 
@@ -63,7 +64,7 @@ export class ServRoomService {
   }
 
 //BORRAR HABITACION
-  deleteHabitacion(id : number){
+  deleteRoom(id : number){
     return this.http.delete<Boolean>(this.Url + '/' + id)
   }
 

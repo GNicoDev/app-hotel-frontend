@@ -11,7 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'appHotel';
+ // title = 'appHotel';
   hasContent = false;
   isHomeRoute = false;
 
