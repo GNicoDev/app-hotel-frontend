@@ -1,7 +1,7 @@
 <body>
     <app-header></app-header>
-    <main [ngClass]="{'container': hasContent && !isHomeRoute}">
-      <router-outlet (activate)="onActivate($event)"></router-outlet>
+    <main >
+      <router-outlet></router-outlet>
     </main>
   </body>
   

@@ -1,10 +1,10 @@
-<section>
+<section class="container">
   <h2>Edit Room</h2>
-  <form (ngSubmit)="saveChanges()" class="form-edit">
+  <form (ngSubmit)="saveChanges()" class="forms">
     <mat-form-field class="form-field">
       <mat-label>Room ID</mat-label>
-      <input matInput [(ngModel)]="room.id" name="roomId" placeholder="Enter Room ID" required>
-      <button mat-raised-button color="primary" type="button" (click)="loadRoomData()">Select Room</button>
+      <input matInput [(ngModel)]="room.id" name="roomId" placeholder="Enter Room ID" [disabled]="roomLoaded" required>
+      <button mat-raised-button color="primary" type="button" [disabled]="roomLoaded" (click)="loadRoomData()">Select Room</button>
     </mat-form-field>
 
 <!-- Show the form only when room data is loaded -->

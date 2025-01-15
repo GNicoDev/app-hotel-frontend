@@ -1,5 +1,5 @@
-import { Component, NgModule } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServRoomService } from '../../../services/servroom/servroom.service';
 import { Room } from '../../../modells/room';
 import { CommonModule } from '@angular/common';
@@ -25,16 +25,36 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   templateUrl: './edit-room.component.html',
   styleUrls: ['./edit-room.component.css']
 })
-export class EditRoomComponent {
+export class EditRoomComponent implements OnInit{
   room: Room = new Room();
   roomId: number | null = null;
   roomLoaded: boolean = false; // Flag to control form visibility
 
   constructor(
+    private route : ActivatedRoute,
     private router: Router,
     private servRoom: ServRoomService,
     private snackBar: MatSnackBar
   ) { }
+
+ ngOnInit(): void { 
+   const id = this.route.snapshot.paramMap.get('id'); 
+   if (id) { 
+      this.roomId = +id; 
+      this.loadRoomDataById(this.roomId); 
+   }
+  }
+
+  loadRoomDataById(id: number): void { 
+    this.servRoom.findById(id).subscribe((room) => { 
+      this.room = room; 
+      this.roomLoaded = true;
+     }, 
+     (error) => { 
+        this.showSnackbar('Error loading room: Room ID does not exist', 'Close'); 
+        console.error('Error loading room:', error); 
+      } );
+   }
 
   loadRoomData(): void {
     this.roomId = Number(this.room.id);

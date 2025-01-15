@@ -1,6 +1,6 @@
-<section>
+<section class="container">
   <h2>Create New Room</h2>
-  <form (ngSubmit)="createRoom()" class="form-create">
+  <form (ngSubmit)="createRoom()" class="forms">
     <mat-form-field class="form-field">
       <mat-label>Room Number</mat-label>
       <input matInput [(ngModel)]="room.roomNumber" name="roomNumber" required>
