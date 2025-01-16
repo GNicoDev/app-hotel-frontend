@@ -7,6 +7,7 @@ import { FindAllRoomsComponent } from './components/rooms/find/find-all-rooms/fi
 import { FindRoomByNumberComponent } from './components/rooms/find/find-room-by-number/find-room-by-number.component';
 import { CheckinComponent } from './components/checkin/checkin.component';
 import { CreateCustomerComponent } from './components/customer/create-customer/create-customer.component';
+import { FindAllCustomerComponent } from './components/customer/find/find-all-customer/find-all-customer.component';
 
 export const routes: Routes = [
     { path : '', component: HomeComponent},
@@ -18,6 +19,7 @@ export const routes: Routes = [
     { path: 'rooms', component: FindAllRoomsComponent },
     { path: 'room-by-number', component: FindRoomByNumberComponent },
 
+    { path: 'customers', component: FindAllCustomerComponent },
     { path: 'create-customer', component: CreateCustomerComponent },
 
     { path: 'checkin', component: CheckinComponent }, 

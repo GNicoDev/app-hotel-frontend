@@ -14,7 +14,7 @@ export class ServCustomerService {
   constructor(private http : HttpClient) { }
 
 //LISTAR CLIENTES
-  getCustomer(){
+  getCustomers(){
     return this.http.get<Customer[]>(this.Url);
   }
 

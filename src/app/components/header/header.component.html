@@ -24,7 +24,7 @@
 
     <!-- Submenú for find Clients -->
     <mat-menu #findClients="matMenu">
-      <button mat-menu-item>All</button>
+      <button mat-menu-item [routerLink]="['/customers']">All</button>
       <button mat-menu-item>By Surname</button>
       <button mat-menu-item>By Passport</button>
     </mat-menu>
