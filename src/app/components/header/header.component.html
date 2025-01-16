@@ -17,7 +17,7 @@
   <!-- Submenú para Clientes -->
   <mat-menu #clientMenu="matMenu">
     <button mat-menu-item [routerLink]="['/create-customer']">Create</button>
-    <button mat-menu-item>Edit</button>
+    <button mat-menu-item [routerLink]="['/edit-customer']">Edit</button>
     <button mat-menu-item>Delete</button>
     <button mat-menu-item [matMenuTriggerFor]="findClients">Find</button>
   </mat-menu>

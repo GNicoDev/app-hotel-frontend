@@ -8,6 +8,7 @@ import { FindRoomByNumberComponent } from './components/rooms/find/find-room-by-
 import { CheckinComponent } from './components/checkin/checkin.component';
 import { CreateCustomerComponent } from './components/customer/create-customer/create-customer.component';
 import { FindAllCustomerComponent } from './components/customer/find/find-all-customer/find-all-customer.component';
+import { EditCustomerComponent } from './components/customer/edit-customer/edit-customer.component';
 
 export const routes: Routes = [
     { path : '', component: HomeComponent},
@@ -21,6 +22,8 @@ export const routes: Routes = [
 
     { path: 'customers', component: FindAllCustomerComponent },
     { path: 'create-customer', component: CreateCustomerComponent },
+    { path: 'edit-customer', component: EditCustomerComponent },
+    { path: 'edit-customer/:id', component: EditCustomerComponent },
 
     { path: 'checkin', component: CheckinComponent }, 
     { path: 'checkin/:roomId', component: CheckinComponent }, 

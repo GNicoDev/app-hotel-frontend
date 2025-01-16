@@ -25,7 +25,7 @@ import { Router } from '@angular/router';
 })
 export class FindAllCustomerComponent implements OnInit {
   customersList: Customer[] = [];
-  displayedColumns: string[] = ['name', 'lastName', 'passport', 'phone', 'actions'];
+  displayedColumns: string[] = [ 'name', 'lastName', 'passport', 'phone', 'actions'];
 
   constructor(
     private customerService: ServCustomerService, 
@@ -46,8 +46,8 @@ export class FindAllCustomerComponent implements OnInit {
     );
   }
 
-  editCustomer(roomId: number) {
-   // this.router.navigate(['/edit-room', roomId]);
+  editCustomer(customerId: number) {
+    this.router.navigate(['/edit-customer', customerId]);
   }
 
   deleteCustomer(roomId: number) {
