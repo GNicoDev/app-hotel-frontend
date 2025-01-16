@@ -4,6 +4,8 @@ import { CreateRoomComponent } from './components/rooms/create-room/create-room.
 import { EditRoomComponent } from './components/rooms/edit-room/edit-room.component'; 
 import { DeleteRoomComponent } from './components/rooms/delete-room/delete-room.component';
 import { FindAllRoomsComponent } from './components/rooms/find/find-all-rooms/find-all-rooms.component';
+import { FindRoomByNumberComponent } from './components/rooms/find/find-room-by-number/find-room-by-number.component';
+import { CheckinComponent } from './components/checkin/checkin.component';
 
 export const routes: Routes = [
     { path : '', component: HomeComponent},
@@ -13,5 +15,8 @@ export const routes: Routes = [
     { path: 'delete-room', component: DeleteRoomComponent },
     { path: 'delete-room/:id', component: DeleteRoomComponent },
     { path: 'rooms', component: FindAllRoomsComponent },
+    { path: 'room-by-number', component: FindRoomByNumberComponent },
+    { path: 'checkin', component: CheckinComponent }, 
+    { path: 'checkin/:roomId', component: CheckinComponent }, 
     
 ];

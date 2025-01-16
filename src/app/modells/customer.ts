@@ -2,7 +2,7 @@ import { Room } from "./room"
 
 export class Customer{
     id!: number
-    passport?: number
+    passport?: string
     name?:string
     lastName?:string
     phone?:string

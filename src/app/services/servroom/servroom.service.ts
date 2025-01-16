@@ -14,7 +14,7 @@ export class ServRoomService {
   constructor(private http : HttpClient ) { }
 
 //LISTAR Habitaciones
- getHabitaciones(){
+ getRooms(){
     return this.http.get<Room[]>(this.Url);
   } 
   

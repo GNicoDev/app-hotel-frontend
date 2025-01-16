@@ -29,8 +29,8 @@ export class ServCustomerService {
   }
 
 //BUSCAR CLIENTE POR DNI
-findByDni(dni: number){
-  return this.http.get<Customer>(this.Url + '/passport/' + dni)
+findByPassport(passport: string){
+  return this.http.get<Customer>(this.Url + '/passport/' + passport)
 }
 
 //GUARDAR CLIENTES

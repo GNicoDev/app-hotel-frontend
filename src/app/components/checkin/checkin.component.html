@@ -1,0 +1,30 @@
+<section class="container">
+    <h2>Check-In Form</h2>
+    <form (ngSubmit)="submitCheckin()" class="forms">
+        <mat-form-field class="form-field">
+            <mat-label>Room Number</mat-label>
+            <input matInput [(ngModel)]="room.roomNumber" name="roomNumber" type="number" [disabled]="true" required>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+            <mat-label>Client Passport</mat-label>
+            <input matInput [(ngModel)]="customer.passport" name="clientPassport" type="text" required>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+            <mat-label>Select a date range</mat-label>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate [(ngModel)]="startDate" name="startDate">
+                <input matEndDate [(ngModel)]="endDate" name="endDate">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+            <mat-label>Guest count</mat-label>
+            <input matInput value="0" [(ngModel)]="guestCount" name="guestCount">
+          </mat-form-field>
+        <div class="btn-save">
+            <button mat-raised-button color="primary" type="submit">Check-in</button>
+        </div>
+    </form>
+</section>

@@ -15,7 +15,7 @@ export class ServhotelService {
 
 
 //RESEVAR HABITACION
-  reservar(room: Room, id: number){
+  checkIn(room: Room, id: number){
     return this.http.post<Room>(this.Url + '/rooms/' + id + '/reservation', room, {
       observe: 'response'
     })

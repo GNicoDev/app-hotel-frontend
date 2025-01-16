@@ -8,7 +8,7 @@
         <button mat-menu-item [routerLink]="['/']">Home</button>
         <button mat-menu-item [matMenuTriggerFor]="clientMenu">Clients</button>
         <button mat-menu-item [matMenuTriggerFor]="roomsMenu">Rooms</button>
-        <button mat-menu-item>Book</button>
+        <button mat-menu-item [routerLink]="['/checkin']">Book</button>
       </mat-menu>
       <button mat-button>Login</button>
     </mat-toolbar>
@@ -40,7 +40,7 @@
     <!-- Submenú for find Clients -->
     <mat-menu #findRooms="matMenu">
       <button mat-menu-item [routerLink]="['/rooms']">All</button>
-      <button mat-menu-item>By number</button>
+      <button mat-menu-item [routerLink]="['/room-by-number']">By number</button>
     </mat-menu>
 
 </header>

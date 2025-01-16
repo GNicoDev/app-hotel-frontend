@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,11 +26,10 @@ import { Router } from '@angular/router';
   ]
 })
 export class FindAllRoomsComponent implements OnInit {
-  availableRooms: MatTableDataSource<Room>;
-  displayedColumns: string[] = ['roomNumber', 'roomType', 'pricePerNight', 'actions'];
+  availableRooms: Room[] = [];
+  displayedColumns: string[] = ['roomNumber', 'roomType', 'pricePerNight', 'guestCount', 'check-in', 'check-out', 'actions'];
 
   constructor(private roomService: ServRoomService, private router : Router) {
-    this.availableRooms = new MatTableDataSource<Room>([]);
   }
 
   ngOnInit(): void {
@@ -39,9 +37,9 @@ export class FindAllRoomsComponent implements OnInit {
   }
 
   getAllRooms() {
-    this.roomService.getHabitaciones().subscribe(
+    this.roomService.getRooms().subscribe(
       (rooms: Room[]) => {
-        this.availableRooms.data = rooms;
+        this.availableRooms = rooms;
       },
       (error) => {
         console.error('Error fetching rooms:', error);
