@@ -136,5 +136,9 @@ export class CheckinComponent implements OnInit {
       verticalPosition: 'top',
     });
   }
+
+  goHome(){
+    this.router.navigate(['/'])
+  }
 }
 

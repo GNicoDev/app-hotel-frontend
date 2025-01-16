@@ -18,9 +18,10 @@
       <mat-label>Price per Night</mat-label>
       <input matInput [(ngModel)]="room.pricePerNight" name="pricePerNight" required>
     </mat-form-field>
-    <div class="btn-create">
-      <button mat-raised-button color="primary" type="submit">Create</button>
-    </div>
+    <div class="btn-submit">
+      <button mat-raised-button color="primary" type="submit">Check-in</button>
+      <button mat-raised-button color="primary" type="button" class="btn-cancel" (click)="goHome()">Cancel</button>
+  </div>
   </form>
 
   <!-- Show created room -->

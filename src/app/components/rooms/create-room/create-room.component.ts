@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { Room } from '../../../modells/room'; 
 import { ServRoomService } from '../../../services/servroom/servroom.service'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-room',
@@ -19,7 +20,10 @@ export class CreateRoomComponent {
   room: Room = new Room();
   createdRoom: Room | null = null; // Store the created room
 
-  constructor(private servRoom: ServRoomService) {
+  constructor(
+    private servRoom: ServRoomService,
+    private router: Router
+  ) {
   }
 
   createRoom(): void {
@@ -37,5 +41,9 @@ export class CreateRoomComponent {
       error => {
         console.error('Error creating room', error);
       });
+  }
+
+  goHome(){
+    this.router.navigate(['/'])
   }
 }

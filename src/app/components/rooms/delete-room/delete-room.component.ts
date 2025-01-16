@@ -80,4 +80,8 @@ export class DeleteRoomComponent implements OnInit {
       verticalPosition: 'top'
     });
   }
+
+  goHome(){
+    this.router.navigate(['/'])
+  }
 }

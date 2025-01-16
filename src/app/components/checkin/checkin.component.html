@@ -3,7 +3,7 @@
     <form (ngSubmit)="submitCheckin()" class="forms">
         <mat-form-field class="form-field">
             <mat-label>Room Number</mat-label>
-            <input matInput [(ngModel)]="room.roomNumber" name="roomNumber" type="number" [disabled]="true" required>
+            <input matInput [(ngModel)]="room.roomNumber" name="roomNumber" type="number" required>
         </mat-form-field>
         <mat-form-field class="form-field">
             <mat-label>Client Passport</mat-label>
@@ -23,8 +23,9 @@
             <mat-label>Guest count</mat-label>
             <input matInput value="0" [(ngModel)]="guestCount" name="guestCount">
           </mat-form-field>
-        <div class="btn-save">
+        <div class="btn-submit">
             <button mat-raised-button color="primary" type="submit">Check-in</button>
+            <button mat-raised-button color="primary" type="button" class="btn-cancel" (click)="goHome()">Cancel</button>
         </div>
     </form>
 </section>

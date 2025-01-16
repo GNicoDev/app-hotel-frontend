@@ -116,5 +116,9 @@ export class EditRoomComponent implements OnInit{
     }
     );
   }
+
+  goHome(){
+    this.router.navigate(['/'])
+  }
 }
 
