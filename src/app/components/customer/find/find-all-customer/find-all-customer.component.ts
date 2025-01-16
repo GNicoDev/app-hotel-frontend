@@ -51,7 +51,6 @@ export class FindAllCustomerComponent implements OnInit {
   }
 
   deleteCustomer(roomId: number) {
-    console.log(roomId);
-   // this.router.navigate(['/delete-room', roomId]);
+    this.router.navigate(['/delete-customer', roomId]);
   }
 }

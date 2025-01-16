@@ -9,6 +9,7 @@ import { CheckinComponent } from './components/checkin/checkin.component';
 import { CreateCustomerComponent } from './components/customer/create-customer/create-customer.component';
 import { FindAllCustomerComponent } from './components/customer/find/find-all-customer/find-all-customer.component';
 import { EditCustomerComponent } from './components/customer/edit-customer/edit-customer.component';
+import { DeleteCustomerComponent } from './components/customer/delete-customer/delete-customer.component';
 
 export const routes: Routes = [
     { path : '', component: HomeComponent},
@@ -24,6 +25,8 @@ export const routes: Routes = [
     { path: 'create-customer', component: CreateCustomerComponent },
     { path: 'edit-customer', component: EditCustomerComponent },
     { path: 'edit-customer/:id', component: EditCustomerComponent },
+    { path: 'delete-customer', component: DeleteCustomerComponent },
+    { path: 'delete-customer/:id', component: DeleteCustomerComponent },
 
     { path: 'checkin', component: CheckinComponent }, 
     { path: 'checkin/:roomId', component: CheckinComponent }, 

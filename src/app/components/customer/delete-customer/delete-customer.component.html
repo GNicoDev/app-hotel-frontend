@@ -1,0 +1,14 @@
+<section class="container">
+    <h2>Delete Customer</h2>
+    <form (ngSubmit)="deleteCustomer()" class="forms">
+      <mat-form-field class="form-field">
+        <mat-label>Customer ID</mat-label>
+        <input matInput [(ngModel)]="customer.id" name="customerId" type="number" required>
+      </mat-form-field>
+      <div class="btn-submit">
+        <button mat-raised-button color="warn" type="submit">Delete Customer</button>
+        <button mat-raised-button color="primary" type="button" class="btn-cancel" (click)="goHome()">Cancel</button>
+    </div>
+    </form>
+  </section>
+  
