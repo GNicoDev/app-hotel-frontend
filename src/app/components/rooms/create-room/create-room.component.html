@@ -19,13 +19,12 @@
       <input matInput [(ngModel)]="room.pricePerNight" name="pricePerNight" required>
     </mat-form-field>
     <div class="btn-submit">
-      <button mat-raised-button color="primary" type="submit">Check-in</button>
+      <button mat-raised-button color="primary" type="submit">Create</button>
       <button mat-raised-button color="primary" type="button" class="btn-cancel" (click)="goHome()">Cancel</button>
   </div>
   </form>
 
-  <!-- Show created room -->
-  <div *ngIf="createdRoom" class="created-room">
+  <div *ngIf="createdRoom" class="created">
     <h3>Room Created</h3>
     <p><strong>ID:</strong> {{ createdRoom.id }}</p>
     <p><strong>Room Number:</strong> {{ createdRoom.roomNumber }}</p>

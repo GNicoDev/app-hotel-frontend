@@ -16,7 +16,7 @@
   
   <!-- Submenú para Clientes -->
   <mat-menu #clientMenu="matMenu">
-    <button mat-menu-item>Create</button>
+    <button mat-menu-item [routerLink]="['/create-customer']">Create</button>
     <button mat-menu-item>Edit</button>
     <button mat-menu-item>Delete</button>
     <button mat-menu-item [matMenuTriggerFor]="findClients">Find</button>
@@ -37,7 +37,7 @@
       <button mat-menu-item [matMenuTriggerFor]="findRooms">Find</button> 
     </mat-menu>
 
-    <!-- Submenú for find Clients -->
+    <!-- Submenú for find Rooms -->
     <mat-menu #findRooms="matMenu">
       <button mat-menu-item [routerLink]="['/rooms']">All</button>
       <button mat-menu-item [routerLink]="['/room-by-number']">By number</button>

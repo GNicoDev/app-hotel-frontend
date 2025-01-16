@@ -14,7 +14,7 @@ export class ServCustomerService {
   constructor(private http : HttpClient) { }
 
 //LISTAR CLIENTES
-  getClientes(){
+  getCustomer(){
     return this.http.get<Customer[]>(this.Url);
   }
 
@@ -34,14 +34,14 @@ findByPassport(passport: string){
 }
 
 //GUARDAR CLIENTES
-  saveCliente(customer: Customer){
+  saveCustomer(customer: Customer){
     return this.http.post<Customer>(this.Url, customer , {
       observe : 'response'
     })
   }
 
 //ACTUALIZAR CLIENTE
-  editCliente(customer: Customer, id: number){
+  updateCustomer(customer: Customer, id: number){
     console.log(customer)
     return this.http.put<Customer>(this.Url + '/' + id, customer, {
       observe: 'response'
@@ -49,7 +49,7 @@ findByPassport(passport: string){
   }
 
 //BORRAR CLIENTE
-  deleteCliente(id : number){
+  deleteCustomer(id : number){
    return this.http.delete<Boolean>(this.Url + '/' + id)
   }
 }

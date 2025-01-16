@@ -86,9 +86,18 @@ export class CheckinComponent implements OnInit {
   
     this.servCustomer.findByPassport(this.customer.passport).subscribe(
       (data) => {
+        if (!data) { 
+          this.showSnackbar('Customer not found. Please enter a valid client passport.', 'Close'); 
+          return;
+         }
+
         this.customer = data
         this.servRoom.findByNumber(this.room.roomNumber).subscribe(
           (room) => {
+            if (!room) { 
+              this.showSnackbar('Room not found. Please enter a valid room number.', 'Close'); 
+              return; 
+            }
             this.roomData = room;
             this.performCheckin();
           },
@@ -110,24 +119,27 @@ export class CheckinComponent implements OnInit {
     this.roomData.checkOutDate = this.endDate;
 
     console.log(this.roomData)
-  
-    this.servHotel.checkIn(this.roomData, this.customer.id).subscribe(
-      () => {
-        this.showSnackbar('Check-in successful', 'Close');
-        this.router.navigate(['/']);
-      },
-      (error) => {
-        if (error.status === 404) {
-          this.showSnackbar('Room or customer not found', 'Close');
-        } else if (error.status === 409) {
-          this.showSnackbar('The room is already occupied', 'Close');
-        } else if (error.status === 400) {
-          this.showSnackbar('Room capacity exceeded', 'Close');
-        } else {
-          this.showSnackbar('Error during check-in', 'Close');
-        }
-        console.error('Error during check-in:', error);
-      });
+
+    if (this.customer.id !== undefined) { 
+      this.servHotel.checkIn(this.roomData, this.customer.id!).subscribe( 
+        () => { 
+          this.showSnackbar('Check-in successful', 'Close'); 
+          this.router.navigate(['/']); 
+        }, (error) => { 
+          if (error.status === 404) { 
+            this.showSnackbar('Room or customer not found.', 'Close'); 
+          } else if (error.status === 409) { 
+            this.showSnackbar('The room is already occupied.', 'Close');
+           } else if (error.status === 400) { 
+            this.showSnackbar('Room capacity exceeded.', 'Close'); 
+          } else { 
+            this.showSnackbar('Error during check-in.', 'Close'); 
+          } console.error('Error during check-in:', error); 
+        } ); 
+      } else { 
+        this.showSnackbar('Cannot perform check-in. Customer ID is missing.', 'Close'); 
+        console.error('Cannot perform check-in. Customer ID is missing.'); 
+      }
   }
   
   showSnackbar(message: string, action: string): void {

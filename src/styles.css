@@ -34,3 +34,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .btn-cancel{
     margin-left: 10px;
   }
+
+  
+.created {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9
+}
