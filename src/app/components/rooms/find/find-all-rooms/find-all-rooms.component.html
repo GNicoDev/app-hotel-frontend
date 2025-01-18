@@ -1,6 +1,10 @@
-<div class="container">
-  <table mat-table [dataSource]="availableRooms" class="mat-elevation-z8">
+<div class="container-list">
+  <mat-form-field class="form-field">
+    <mat-label>Search by Room Number</mat-label>
+    <input matInput [(ngModel)]="searchTerm" (keyup)="applyFilter()">
+  </mat-form-field>
 
+  <table mat-table [dataSource]="filteredRooms" class="mat-elevation-z8">
     <ng-container matColumnDef="roomNumber">
       <th mat-header-cell *matHeaderCellDef> No. </th>
       <td mat-cell *matCellDef="let element"> {{element.roomNumber}} </td>
@@ -39,6 +43,15 @@
         </button>
         <button mat-icon-button (click)="deleteRoom(element.id)">
           <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="!element.checkInDate" (click)="checkInRoom(element.roomNumber)"> 
+          <mat-icon>login</mat-icon> 
+        </button> 
+        <button mat-icon-button *ngIf="element.checkInDate" (click)="confirmCheckOut(element.roomNumber)"> 
+          <mat-icon>exit_to_app</mat-icon> 
+        </button>
+        <button mat-icon-button *ngIf="element.checkInDate" (click)="viewCustomerDetail(element.id)"> 
+          <mat-icon>person</mat-icon> 
         </button>
       </td>
     </ng-container>

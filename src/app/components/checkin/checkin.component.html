@@ -13,15 +13,15 @@
             <mat-label>Select a date range</mat-label>
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-date-range-input [rangePicker]="picker">
-                <input matStartDate [(ngModel)]="startDate" name="startDate">
-                <input matEndDate [(ngModel)]="endDate" name="endDate">
+                <input matStartDate [(ngModel)]="startDate" name="startDate" required>
+                <input matEndDate [(ngModel)]="endDate" name="endDate" required>
             </mat-date-range-input>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker #picker></mat-date-range-picker>
         </mat-form-field>
         <mat-form-field class="form-field">
             <mat-label>Guest count</mat-label>
-            <input matInput value="0" [(ngModel)]="guestCount" name="guestCount">
+            <input matInput value="0" [(ngModel)]="guestCount" name="guestCount" required>
           </mat-form-field>
         <div class="btn-submit">
             <button mat-raised-button color="primary" type="submit">Check-in</button>

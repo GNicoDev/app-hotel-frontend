@@ -15,20 +15,20 @@ export class ServhotelService {
 
 
 //RESEVAR HABITACION
-  checkIn(room: Room, id: number){
-    return this.http.post<Room>(this.Url + '/rooms/' + id + '/reservation', room, {
+  checkIn(room: Room, customerId: number){
+    return this.http.post<Room>(this.Url + '/rooms/' + customerId + '/reservation', room, {
       observe: 'response'
     })
   }
 
-  checkOut(numero: number){
-    return this.http.post<Room>(this.Url + '/rooms/' + numero + '/checkout', {
+  checkOut(roomNumber: number){
+    return this.http.post<Room>(this.Url + '/rooms/' + roomNumber + '/checkout', {
       observe: 'response'
     })
   }
 
-  returnClientRoom(idHabitacion: number){
-    return this.http.get<Customer>(this.Url + '/rooms/' + idHabitacion + '/customer')
+  returnClientRoom(roomId: number){
+    return this.http.get<Customer>(this.Url + '/rooms/' + roomId + '/customer')
   }
 
 }

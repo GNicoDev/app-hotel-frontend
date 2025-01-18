@@ -1,0 +1,20 @@
+<section class="container">
+    
+  <h2>{{ byparams ? 'Customer Details' : 'Find Customer by Passport' }}</h2>
+  <form *ngIf="!byparams" (ngSubmit)="findCustomer()" class="forms">
+      <mat-form-field class="form-field">
+        <mat-label>Passport Number</mat-label>
+        <input matInput [(ngModel)]="passport" name="passport" placeholder="Enter Passport Number" required>
+        <button mat-raised-button color="primary" type="submit">Search</button>
+      </mat-form-field>
+    </form>
+  
+    <div *ngIf="customer" class="details-customer">
+   <h3 *ngIf="!byparams">Customer Details</h3>
+    <p><strong>ID:</strong> {{ customer.id }}</p>
+    <p><strong>Name:</strong> {{ customer.name }}</p>
+    <p><strong>Last Name:</strong> {{ customer.lastName }}</p>
+    <p><strong>Passport:</strong> {{ customer.passport }}</p>
+    <p><strong>Phone:</strong> {{ customer.phone }}</p>
+    </div>
+  </section>

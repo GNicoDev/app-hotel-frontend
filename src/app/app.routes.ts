@@ -10,6 +10,7 @@ import { CreateCustomerComponent } from './components/customer/create-customer/c
 import { FindAllCustomerComponent } from './components/customer/find/find-all-customer/find-all-customer.component';
 import { EditCustomerComponent } from './components/customer/edit-customer/edit-customer.component';
 import { DeleteCustomerComponent } from './components/customer/delete-customer/delete-customer.component';
+import { FindCustomerBypassportComponent } from './components/customer/find/find-customer-bypassport/find-customer-bypassport.component';
 
 export const routes: Routes = [
     { path : '', component: HomeComponent},
@@ -27,6 +28,7 @@ export const routes: Routes = [
     { path: 'edit-customer/:id', component: EditCustomerComponent },
     { path: 'delete-customer', component: DeleteCustomerComponent },
     { path: 'delete-customer/:id', component: DeleteCustomerComponent },
+    { path: 'customer-by-passport', component: FindCustomerBypassportComponent },
 
     { path: 'checkin', component: CheckinComponent }, 
     { path: 'checkin/:roomId', component: CheckinComponent }, 
