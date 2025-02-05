@@ -9,7 +9,7 @@ import { Observable, from } from 'rxjs';
 })
 export class ServRoomService {
 
-  Url='http://localhost:8080/hotel/rooms';
+  Url='http://localhost:8081/hotel/rooms';
 
   constructor(private http : HttpClient ) { }
 

@@ -1,20 +1,21 @@
 <header>
-<nav>
+  <nav>
     <mat-toolbar color="primary" class="menu">
       <span>HOTEL</span>
       <span class="spacer"></span>
       <button mat-button [matMenuTriggerFor]="menu">Menu</button>
       <mat-menu #menu="matMenu" class="menu">
-        <button mat-menu-item [routerLink]="['/']">Home</button>
+        <button mat-menu-item [routerLink]="['home']">Home</button>
         <button mat-menu-item [matMenuTriggerFor]="clientMenu">Clients</button>
         <button mat-menu-item [matMenuTriggerFor]="roomsMenu">Rooms</button>
         <button mat-menu-item [routerLink]="['/checkin']">Book</button>
       </mat-menu>
-      <button mat-button>Login</button>
+      <button mat-button (click)="logout()" *ngIf="isLoggedIn">Logout</button>
+      <button mat-button [routerLink]="['/login']" *ngIf="!isLoggedIn">Login</button>
     </mat-toolbar>
   </nav>
-  
-  <!-- Submenú para Clientes -->
+
+  <!-- Submenu for Clients -->
   <mat-menu #clientMenu="matMenu">
     <button mat-menu-item [routerLink]="['/create-customer']">Create</button>
     <button mat-menu-item [routerLink]="['/edit-customer']">Edit</button>
@@ -22,24 +23,23 @@
     <button mat-menu-item [matMenuTriggerFor]="findClients">Find</button>
   </mat-menu>
 
-    <!-- Submenú for find Clients -->
-    <mat-menu #findClients="matMenu">
-      <button mat-menu-item [routerLink]="['/customers']">All</button>
-      <button mat-menu-item [routerLink]="['/customer-by-passport']">By Passport</button>
-    </mat-menu>
+  <!-- Submenu for find Clients -->
+  <mat-menu #findClients="matMenu">
+    <button mat-menu-item [routerLink]="['/customers']">All</button>
+    <button mat-menu-item [routerLink]="['/customer-by-passport']">By Passport</button>
+  </mat-menu>
 
-  <!-- Submenú para Habitaciones -->
-    <mat-menu #roomsMenu="matMenu"> 
-      <button mat-menu-item [routerLink]="['/create-room']">Create</button> 
-      <button mat-menu-item [routerLink]="['/edit-room']">Edit</button> 
-      <button mat-menu-item [routerLink]="['/delete-room/']">Delete</button> 
-      <button mat-menu-item [matMenuTriggerFor]="findRooms">Find</button> 
-    </mat-menu>
+  <!-- Submenu for Rooms -->
+  <mat-menu #roomsMenu="matMenu">
+    <button mat-menu-item [routerLink]="['/create-room']" *ngIf="userRole === 'ADMIN'">Create</button>
+    <button mat-menu-item [routerLink]="['/edit-room']" *ngIf="userRole === 'ADMIN'">Edit</button>
+    <button mat-menu-item [routerLink]="['/delete-room/']" *ngIf="userRole === 'ADMIN'">Delete</button>
+    <button mat-menu-item [matMenuTriggerFor]="findRooms">Find</button>
+  </mat-menu>
 
-    <!-- Submenú for find Rooms -->
-    <mat-menu #findRooms="matMenu">
-      <button mat-menu-item [routerLink]="['/rooms']">All</button>
-      <button mat-menu-item [routerLink]="['/room-by-number']">By number</button>
-    </mat-menu>
-
+  <!-- Submenu for find Rooms -->
+  <mat-menu #findRooms="matMenu">
+    <button mat-menu-item [routerLink]="['/rooms']">All</button>
+    <button mat-menu-item [routerLink]="['/room-by-number']">By number</button>
+  </mat-menu>
 </header>

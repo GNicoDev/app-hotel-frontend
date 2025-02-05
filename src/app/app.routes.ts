@@ -11,9 +11,10 @@ import { FindAllCustomerComponent } from './components/customer/find/find-all-cu
 import { EditCustomerComponent } from './components/customer/edit-customer/edit-customer.component';
 import { DeleteCustomerComponent } from './components/customer/delete-customer/delete-customer.component';
 import { FindCustomerBypassportComponent } from './components/customer/find/find-customer-bypassport/find-customer-bypassport.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
-    { path : '', component: HomeComponent},
+    { path: 'home', component: HomeComponent},
     { path: 'create-room', component: CreateRoomComponent },
     { path: 'edit-room', component: EditRoomComponent },
     { path: 'edit-room/:id', component: EditRoomComponent },
@@ -32,5 +33,7 @@ export const routes: Routes = [
 
     { path: 'checkin', component: CheckinComponent }, 
     { path: 'checkin/:roomId', component: CheckinComponent }, 
-    
+
+    { path: 'login', component: LoginComponent },
+    { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirigir a la página de login por defecto
 ];
