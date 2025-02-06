@@ -14,6 +14,7 @@ import { FindCustomerBypassportComponent } from './components/customer/find/find
 import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
+    { path: '', component: HomeComponent},
     { path: 'home', component: HomeComponent},
     { path: 'create-room', component: CreateRoomComponent },
     { path: 'edit-room', component: EditRoomComponent },
@@ -35,5 +36,5 @@ export const routes: Routes = [
     { path: 'checkin/:roomId', component: CheckinComponent }, 
 
     { path: 'login', component: LoginComponent },
-    { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirigir a la página de login por defecto
+   // { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirigir a la página de login por defecto
 ];

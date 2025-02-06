@@ -17,19 +17,7 @@ export class ServRoomService {
  getRooms(){
     return this.http.get<Room[]>(this.Url);
   } 
-  
-  /*getHabitaciones(): Observable<Habitacion[]> {
-    let habitaciones: Habitacion[] = [{
-      id: 1,
-      nroHabitacion: 304,
-      cantHuespedes: 3,
-      tipoHabitacion: "Triple",
-      fechaDeIngreso: new Date('2023-12-01'),
-      fechaDeEgreso: new Date('2023-12-06'),
-      precio: 8500.50
-  }]
-    return from([habitaciones])
-  }*/
+
 
 //BUSCAR HABITACION POR ID
   findById(id: number){

@@ -18,6 +18,7 @@ import { AuthService } from '../../services/servauth/auth.service';
 export class HeaderComponent implements OnInit {
   userRole: string | null = '';
   isLoggedIn: boolean = false;
+  username: string | null = '';
 
   constructor(private authService : AuthService, private router: Router) { }
 
@@ -26,6 +27,7 @@ export class HeaderComponent implements OnInit {
       this.isLoggedIn = status;
       if (status) {
         this.userRole = localStorage.getItem('role');
+        this.username = localStorage.getItem('username');
         console.log('User role from localStorage:', this.userRole);
       }
     });

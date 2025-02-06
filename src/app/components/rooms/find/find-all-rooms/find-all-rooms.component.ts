@@ -13,6 +13,7 @@ import { Room } from '../../../../modells/room';
 import { Router } from '@angular/router';
 import { ServhotelService } from '../../../../services/servhotel/servhotel.service';
 import { Customer } from '../../../../modells/customer';
+import { AuthService } from '../../../../services/servauth/auth.service';
 
 @Component({
   selector: 'app-find-all-rooms',
@@ -34,17 +35,26 @@ import { Customer } from '../../../../modells/customer';
 export class FindAllRoomsComponent implements OnInit {
   availableRooms: Room[] = [];
   filteredRooms: Room[] = [];
+  isLoggedIn: boolean = false;
+  userRole: string | null = '';
   searchTerm: string = '';
   displayedColumns: string[] = ['roomNumber', 'roomType', 'pricePerNight', 'guestCount', 'check-in', 'check-out', 'actions'];
 
   constructor(
     private roomService: ServRoomService,
+    private authService : AuthService,
     private router: Router,
     private servHotel: ServhotelService,
     private snackBar: MatSnackBar // Asegúrate de inyectar MatSnackBar
   ) { }
 
   ngOnInit(): void {
+    this.authService.isLoggedIn().subscribe(status => {
+      this.isLoggedIn = status;
+      if (status) {
+        this.userRole = localStorage.getItem('role');
+      }
+    });
     this.getAllRooms();
   }
 

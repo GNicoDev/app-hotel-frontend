@@ -3,7 +3,8 @@
     <mat-toolbar color="primary" class="menu">
       <span>HOTEL</span>
       <span class="spacer"></span>
-      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+      <span *ngIf="isLoggedIn" class="logged-user">Logged-in user:  <span class="username">  {{ username }}</span></span>
+      <button mat-button [matMenuTriggerFor]="menu" *ngIf="isLoggedIn">Menu</button>
       <mat-menu #menu="matMenu" class="menu">
         <button mat-menu-item [routerLink]="['home']">Home</button>
         <button mat-menu-item [matMenuTriggerFor]="clientMenu">Clients</button>
@@ -19,7 +20,7 @@
   <mat-menu #clientMenu="matMenu">
     <button mat-menu-item [routerLink]="['/create-customer']">Create</button>
     <button mat-menu-item [routerLink]="['/edit-customer']">Edit</button>
-    <button mat-menu-item [routerLink]="['/delete-customer']">Delete</button>
+    <button mat-menu-item [routerLink]="['/delete-customer']" *ngIf="userRole === 'ADMIN'">Delete</button>
     <button mat-menu-item [matMenuTriggerFor]="findClients">Find</button>
   </mat-menu>
 
