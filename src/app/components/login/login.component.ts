@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/servauth/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -15,10 +15,15 @@ import { jwtDecode } from 'jwt-decode';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   credentials = { username: '', password: '' };
 
   constructor(private authService: AuthService, private router: Router) { }
+
+  ngOnInit(): void {
+      this.credentials.password= '';
+      this.credentials.username= '';
+  }
 
   login() {
     this.authService.login(this.credentials).subscribe(
