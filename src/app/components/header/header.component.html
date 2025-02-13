@@ -9,6 +9,7 @@
         <button mat-menu-item [routerLink]="['home']">Home</button>
         <button mat-menu-item [matMenuTriggerFor]="clientMenu">Clients</button>
         <button mat-menu-item [matMenuTriggerFor]="roomsMenu">Rooms</button>
+        <button mat-menu-item *ngIf="userRole === 'ADMIN'" [matMenuTriggerFor]="userMenu">Users</button>
         <button mat-menu-item [routerLink]="['/checkin']">Book</button>
       </mat-menu>
       <button mat-button (click)="logout()" *ngIf="isLoggedIn">Logout</button>
@@ -42,5 +43,10 @@
   <mat-menu #findRooms="matMenu">
     <button mat-menu-item [routerLink]="['/rooms']">All</button>
     <button mat-menu-item [routerLink]="['/room-by-number']">By number</button>
+  </mat-menu>
+
+   <!-- Submenu for Users (accessible only by admins) -->
+   <mat-menu #userMenu="matMenu">
+    <button mat-menu-item [routerLink]="['/users']">All Users</button>
   </mat-menu>
 </header>
