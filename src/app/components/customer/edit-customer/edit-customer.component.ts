@@ -5,9 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { Customer } from '../../../modells/customer';
 import { ServCustomerService } from '../../../services/servcustomer/servcustomer.service';
+import { MessageService } from '../../../services/servmessage/message.service';
 
 @Component({
   selector: 'app-edit-customer',
@@ -30,7 +31,7 @@ export class EditCustomerComponent implements OnInit{
     private route : ActivatedRoute,
     private router: Router,
     private servCustomer: ServCustomerService,
-    private snackBar: MatSnackBar
+    private messageService: MessageService
   ) { }
 
  ngOnInit(): void { 
@@ -48,7 +49,7 @@ export class EditCustomerComponent implements OnInit{
       this.customerLoaded = true;
      }, 
      (error) => { 
-        this.showSnackbar('Error loading customer: Customer ID does not exist', 'Close'); 
+        this.messageService.showSnackbar('Error loading customer: Customer ID does not exist', 'Close'); 
         console.error('Error loading customer:', error); 
       } );
    }
@@ -56,7 +57,7 @@ export class EditCustomerComponent implements OnInit{
   loadCustomerData(): void {
     this.customerId = Number(this.customer.id);
     if (isNaN(this.customerId) || this.customerId <= 0) {
-      this.showSnackbar('Please enter a valid Customer ID', 'Close');
+      this.messageService.showSnackbar('Please enter a valid Customer ID', 'Close');
       return;
     }
 
@@ -69,7 +70,7 @@ export class EditCustomerComponent implements OnInit{
         this.customerLoaded = true;
       },
         (error) => {
-          this.showSnackbar('Error editing customer: Customer ID does not exist', 'Close');
+          this.messageService.showSnackbar('Error editing customer: Customer ID does not exist', 'Close');
         }
       );
     }
@@ -88,26 +89,18 @@ export class EditCustomerComponent implements OnInit{
       console.log(customerData)
       this.servCustomer.updateCustomer(customerData, this.customerId).subscribe(
         () => {
-        this.showSnackbar('Customer edited successfully', 'Close'); 
+        this.messageService.showSnackbar('Customer edited successfully', 'Close'); 
         this.router.navigate(['/']); 
         }, 
         (error) => {
         if (error.status === 404) {
-          this.showSnackbar('Error editing customer: Invalid customer data', 'Close');
+          this.messageService.showSnackbar('Error editing customer: Invalid customer data', 'Close');
         } else {
-          this.showSnackbar('Unexpected error occurred', 'Close');
+          this.messageService.showSnackbar('Unexpected error occurred', 'Close');
 
         } console.error('Error editing customer:', error);
       });
     }
-  }
-
-  showSnackbar(message: string, action: string): void {
-    this.snackBar.open(message, action, {
-      duration: 4000,
-      verticalPosition: 'top',
-    }
-    );
   }
 
   goHome(){

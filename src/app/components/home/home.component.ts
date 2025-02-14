@@ -11,12 +11,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { Room } from '../../modells/room';
 import { ServRoomService } from '../../services/servroom/servroom.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/servauth/auth.service';
+import { MessageService } from '../../services/servmessage/message.service';
 
 @Component({
   selector: 'app-home',
@@ -51,8 +52,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private servRoom: ServRoomService,
     private router: Router,
-    private snackBar: MatSnackBar,
-    private authService: AuthService
+    private authService: AuthService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -75,12 +76,12 @@ export class HomeComponent implements OnInit {
           console.log(this.availableRooms);
         } else {
           this.availableRooms = [];
-          this.showSnackbar("There are no rooms available for the provided dates.", 'Close');
+          this.messageService.showSnackbar("There are no rooms available for the provided dates.", 'Close');
         }
       },
       (error) => {
         if (error.status === 204) {
-          this.showSnackbar("There are no rooms available for the provided dates.", 'Close');
+          this.messageService.showSnackbar("There are no rooms available for the provided dates.", 'Close');
         }
       }
     );
@@ -96,10 +97,5 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/checkin'], { queryParams });
   }
 
-  showSnackbar(message: string, action: string): void {
-    this.snackBar.open(message, action, {
-      duration: 4000,
-      verticalPosition: 'top',
-    });
-  }
+
 }

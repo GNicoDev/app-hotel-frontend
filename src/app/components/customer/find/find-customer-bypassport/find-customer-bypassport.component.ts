@@ -7,8 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ServhotelService } from '../../../../services/servhotel/servhotel.service';
+import { MessageService } from '../../../../services/servmessage/message.service';
 
 @Component({
   selector: 'app-find-customer-bypassport',
@@ -29,10 +30,9 @@ export class FindCustomerBypassportComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private serCustomer: ServCustomerService,
     private servHotel: ServhotelService,
-    private snackBar: MatSnackBar
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -46,12 +46,12 @@ export class FindCustomerBypassportComponent implements OnInit {
               console.log(this.passport)
               this.findCustomer(); 
             } else { 
-              this.showSnackbar('Customer passport not found.', 'Close'); 
+              this.messageService.showSnackbar('Customer passport not found.', 'Close'); 
             } 
           }, 
           (error) => { 
             console.error('Error fetching customer by ID:', error); 
-            this.showSnackbar('Error fetching customer details. Please try again.', 'Close'); 
+            this.messageService.showSnackbar('Error fetching customer details. Please try again.', 'Close'); 
           } 
         ); 
       } 
@@ -66,16 +66,11 @@ export class FindCustomerBypassportComponent implements OnInit {
           this.customer = data;
         },
         (error) => {
-          this.showSnackbar('Customer not found. Please enter a valid Customer Passport.', 'Close');
+          this.messageService.showSnackbar('Customer not found. Please enter a valid Customer Passport.', 'Close');
           console.error('Error finding customer:', error);
         }
       );
   }
 
-  showSnackbar(message: string, action: string): void {
-    this.snackBar.open(message, action, {
-      duration: 4000,
-      verticalPosition: 'top',
-    });
-  }
+
 }

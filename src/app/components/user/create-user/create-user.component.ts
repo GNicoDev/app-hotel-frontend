@@ -9,6 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { User, Role } from '../../../modells/user'; 
 import { UserService } from '../../../services/servuser/user.service'; 
 import { Router } from '@angular/router';
+import { MessageService } from '../../../services/servmessage/message.service';
 
 @Component({
   selector: 'app-create-user',
@@ -24,17 +25,18 @@ export class CreateUserComponent {
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   createUser(): void {
     this.userService.createUser(this.user).subscribe(
       response => {
-        console.log('User created successfully', response);
+        this.messageService.showSnackbar('User created successfully', 'Close')
         this.createdUser = response; // Store the created user
       },
       error => {
-        console.error('Error creating user', error);
+        this.messageService.showSnackbar('Error creating user. ' + error, 'Close')
       }
     );
   }

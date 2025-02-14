@@ -8,11 +8,21 @@ import { MatSelectModule } from '@angular/material/select';
 import { Customer } from '../../../modells/customer'; 
 import { ServCustomerService } from '../../../services/servcustomer/servcustomer.service'; 
 import { Router } from '@angular/router';
+import { MessageService } from '../../../services/servmessage/message.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-customer',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule],
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatButtonModule, 
+    MatSelectModule,
+    MatSnackBarModule
+  ],
   templateUrl: './create-customer.component.html',
   styleUrl: './create-customer.component.css'
 })
@@ -22,7 +32,9 @@ export class CreateCustomerComponent {
 
   constructor(
     private servCustomer: ServCustomerService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
+    
   ) {
   }
 
@@ -34,12 +46,13 @@ export class CreateCustomerComponent {
       phone: this.customer.phone
     };
 
-    this.servCustomer.saveCustomer(customerData).subscribe( (response) => {
-      console.log('Room created successfully', response.body);
+    this.servCustomer.saveCustomer(customerData).subscribe( 
+      (response) => {
+      this.messageService.showSnackbar('Customer created successfully', 'Close');
       this.createdCustomer = response.body; // Store the created room 
     },
       error => {
-        console.error('Error creating customer', error);
+        this.messageService.showSnackbar('Error creating customer. ' + error.body, 'Close')
       });
   }
 

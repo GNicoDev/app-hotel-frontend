@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { Room } from '../../../modells/room';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServRoomService } from '../../../services/servroom/servroom.service';
+import { MessageService } from '../../../services/servmessage/message.service';
 
 @Component({
   selector: 'app-delete-room',
@@ -18,7 +19,8 @@ import { ServRoomService } from '../../../services/servroom/servroom.service';
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
   ],
   templateUrl: './delete-room.component.html',
   styleUrls: ['./delete-room.component.css'] // Corrige el nombre de la propiedad a "style**s**Urls"
@@ -31,7 +33,7 @@ export class DeleteRoomComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private servRoom: ServRoomService,
-    private snackBar: MatSnackBar
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void { 
@@ -53,7 +55,7 @@ export class DeleteRoomComponent implements OnInit {
   deleteRoom() {
     this.roomId = Number(this.room.id);
     if (isNaN(this.roomId) || this.roomId <= 0) {
-      this.showSnackbar('Please enter a valid Room ID', 'Close');
+      this.messageService.showSnackbar('Please enter a valid Room ID', 'Close');
       return;
     }
     this.delete(this.roomId);
@@ -61,25 +63,19 @@ export class DeleteRoomComponent implements OnInit {
   delete(id: number) {
     this.servRoom.deleteRoom(id).subscribe(
       () => {
-        this.showSnackbar('Room deleted successfully', 'Close');
+        this.messageService.showSnackbar('Room deleted successfully', 'Close');
         this.router.navigate(['/rooms']);
       },
       (error) => { 
         if (error.status === 404) { 
-          this.showSnackbar('Room not found. Please enter a valid Room ID.', 'Close'); 
+          this.messageService.showSnackbar('Room not found. Please enter a valid Room ID.', 'Close'); 
         } else { 
-          this.showSnackbar('Error deleting room', 'Close'); 
+          this.messageService.showSnackbar('Error deleting room', 'Close'); 
         } console.error('Error deleting room:', error);
        }
     );
   }
 
-  showSnackbar(message: string, action: string): void {
-    this.snackBar.open(message, action, {
-      duration: 4000,
-      verticalPosition: 'top'
-    });
-  }
 
   goHome(){
     this.router.navigate(['/'])

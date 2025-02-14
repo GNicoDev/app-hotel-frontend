@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MessageService } from '../../../../services/servmessage/message.service';
 
 @Component({
   selector: 'app-find-room-by-number',
@@ -30,12 +31,12 @@ export class FindRoomByNumberComponent {
   constructor(
     private router: Router,
     private servRoom: ServRoomService,
-    private snackBar: MatSnackBar
+    private messageService: MessageService
   ) { }
 
   findRoom(): void {
     if (isNaN(this.roomNumber) || this.roomNumber <= 0) {
-      this.showSnackbar('Please enter a valid Room Number', 'Close');
+      this.messageService.showSnackbar('Please enter a valid Room Number', 'Close');
       return;
     }
 
@@ -44,16 +45,9 @@ export class FindRoomByNumberComponent {
         this.room = room;
       },
       (error) => {
-        this.showSnackbar('Room not found. Please enter a valid Room Number.', 'Close');
-        console.error('Error finding room:', error);
+        this.messageService.showSnackbar('Room not found. Please enter a valid Room Number.', 'Close');
       }
     );
   }
 
-  showSnackbar(message: string, action: string): void {
-    this.snackBar.open(message, action, {
-      duration: 4000,
-      verticalPosition: 'top',
-    });
-  }
 }
