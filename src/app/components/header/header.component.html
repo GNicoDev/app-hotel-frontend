@@ -47,6 +47,7 @@
 
    <!-- Submenu for Users (accessible only by admins) -->
    <mat-menu #userMenu="matMenu">
+    <button mat-menu-item [routerLink]="['/users/new']">Create</button>
     <button mat-menu-item [routerLink]="['/users']">All Users</button>
   </mat-menu>
 </header>

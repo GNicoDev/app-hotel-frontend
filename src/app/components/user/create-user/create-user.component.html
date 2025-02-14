@@ -1,0 +1,40 @@
+<section class="container">
+    <h2>Create New User</h2>
+    <form (ngSubmit)="createUser()" class="forms" autocomplete="off">
+      <mat-form-field class="form-field">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="user.userName" name="new-username" required autocomplete="off">
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="user.email" name="email" required>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" [(ngModel)]="user.password" name="new-password" required autocomplete="off">
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Role</mat-label>
+        <mat-select [(ngModel)]="user.role" name="role" required>
+          <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-checkbox [(ngModel)]="user.locked" name="locked">Locked</mat-checkbox>
+      <mat-checkbox [(ngModel)]="user.disabled" name="disabled">Disabled</mat-checkbox>
+      <div class="btn-submit">
+        <button mat-raised-button color="primary" type="submit">Create</button>
+        <button mat-raised-button color="primary" type="button" class="btn-cancel" (click)="goHome()">Cancel</button>
+      </div>
+    </form>
+  
+    <div *ngIf="createdUser" class="created">
+      <h3>User Created</h3>
+      <p><strong>Username:</strong> {{ createdUser.userName }}</p>
+      <p><strong>Email:</strong> {{ createdUser.email }}</p>
+      <p><strong>Role:</strong> {{ createdUser.role }}</p>
+      <p><strong>Locked:</strong> {{ createdUser.locked }}</p>
+      <p><strong>Disabled:</strong> {{ createdUser.disabled }}</p>
+    </div>
+  </section>
+  
+  

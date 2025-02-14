@@ -13,6 +13,7 @@ import { DeleteCustomerComponent } from './components/customer/delete-customer/d
 import { FindCustomerBypassportComponent } from './components/customer/find/find-customer-bypassport/find-customer-bypassport.component';
 import { LoginComponent } from './components/login/login.component';
 import { FindAllUsersComponent } from './components/user/find/find-all-users/find-all-users/find-all-users.component';
+import { CreateUserComponent } from './components/user/create-user/create-user.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent},
@@ -38,6 +39,7 @@ export const routes: Routes = [
     { path: 'checkin/:roomId', component: CheckinComponent }, 
 
     { path: 'users', component: FindAllUsersComponent},
+    { path: 'users/new', component: CreateUserComponent },
 
     { path: 'login', component: LoginComponent },
    // { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirigir a la página de login por defecto
