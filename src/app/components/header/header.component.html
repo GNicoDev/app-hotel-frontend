@@ -9,9 +9,10 @@
         <button mat-menu-item [routerLink]="['home']">Home</button>
         <button mat-menu-item [matMenuTriggerFor]="clientMenu">Clients</button>
         <button mat-menu-item [matMenuTriggerFor]="roomsMenu">Rooms</button>
-        <button mat-menu-item *ngIf="userRole === 'ADMIN'" [matMenuTriggerFor]="userMenu">Users</button>
         <button mat-menu-item [routerLink]="['/checkin']">Book</button>
       </mat-menu>
+      <button mat-button *ngIf="userRole === 'ADMIN' && isLoggedIn" [matMenuTriggerFor]="userMenu">Users</button>
+
       <button mat-button (click)="logout()" *ngIf="isLoggedIn">Logout</button>
       <button mat-button [routerLink]="['/login']" *ngIf="!isLoggedIn">Login</button>
     </mat-toolbar>
@@ -27,7 +28,7 @@
 
   <!-- Submenu for find Clients -->
   <mat-menu #findClients="matMenu">
-    <button mat-menu-item [routerLink]="['/customers']">All</button>
+    <button mat-menu-item [routerLink]="['/customers']">All clients</button>
     <button mat-menu-item [routerLink]="['/customer-by-passport']">By Passport</button>
   </mat-menu>
 
@@ -41,13 +42,15 @@
 
   <!-- Submenu for find Rooms -->
   <mat-menu #findRooms="matMenu">
-    <button mat-menu-item [routerLink]="['/rooms']">All</button>
+    <button mat-menu-item [routerLink]="['/rooms']">All rooms</button>
     <button mat-menu-item [routerLink]="['/room-by-number']">By number</button>
   </mat-menu>
 
    <!-- Submenu for Users (accessible only by admins) -->
    <mat-menu #userMenu="matMenu">
     <button mat-menu-item [routerLink]="['/users/new']">Create</button>
+    <button mat-menu-item [routerLink]="['/users/edit']">Edit</button>
+    <button mat-menu-item [routerLink]="['/users/delete']">Delete</button>
     <button mat-menu-item [routerLink]="['/users']">All Users</button>
   </mat-menu>
 </header>

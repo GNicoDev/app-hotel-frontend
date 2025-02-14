@@ -14,6 +14,8 @@ import { FindCustomerBypassportComponent } from './components/customer/find/find
 import { LoginComponent } from './components/login/login.component';
 import { FindAllUsersComponent } from './components/user/find/find-all-users/find-all-users/find-all-users.component';
 import { CreateUserComponent } from './components/user/create-user/create-user.component';
+import { DeleteUserComponent } from './components/user/delete-user/delete-user.component';
+import { EditUserComponent } from './components/user/edit-user/edit-user.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent},
@@ -40,6 +42,9 @@ export const routes: Routes = [
 
     { path: 'users', component: FindAllUsersComponent},
     { path: 'users/new', component: CreateUserComponent },
+    { path: 'users/delete', component: DeleteUserComponent },
+    { path: 'users/edit', component: EditUserComponent },
+    { path: 'users/edit/:username', component: EditUserComponent },
 
     { path: 'login', component: LoginComponent },
    // { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirigir a la página de login por defecto

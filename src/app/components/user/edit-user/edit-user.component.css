@@ -1,0 +1,21 @@
+.checkbox-container {
+  
+    background-color: #595858; /* Fondo claro para mejor contraste */
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-container mat-checkbox {
+    margin-bottom: 10px;
+    color: #4a4a4a; /* Cambia el color del texto a gris oscuro */
+  }
+  
+  .mat-checkbox .mat-checkbox-frame {
+    border-color: #4a4a4a; /* Color del borde del checkbox */
+  }
+  
+  .mat-checkbox .mat-checkbox-background {
+    background-color: #4a4a4a; /* Fondo del checkbox marcado */
+  }

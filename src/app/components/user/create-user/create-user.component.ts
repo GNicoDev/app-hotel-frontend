@@ -36,7 +36,11 @@ export class CreateUserComponent {
         this.createdUser = response; // Store the created user
       },
       error => {
-        this.messageService.showSnackbar('Error creating user. ' + error, 'Close')
+        if (error.status === 409) {
+          this.messageService.showSnackbar('User with this username already exists', 'Close');
+        } else {
+          this.messageService.showSnackbar('Error creating user.', 'Close');
+        }
       }
     );
   }
