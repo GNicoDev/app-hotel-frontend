@@ -1,0 +1,30 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Profile</mat-card-title>
+    </mat-card-header>
+    <mat-card-content *ngIf="user">
+      <mat-list>
+        <mat-list-item>
+          <div class="text-container">
+          <mat-icon mat-list-icon>person</mat-icon>
+          <h4 mat-line>Username:</h4>
+          <p mat-line>{{ user.userName }}</p> <!-- Mostrar nombre de usuario -->
+        </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="text-container">
+
+          <mat-icon mat-list-icon>email</mat-icon>
+          <h4 mat-line>Email:</h4>
+          <p mat-line>{{ user.email }}</p> <!-- Mostrar correo electrónico -->
+        </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="editProfile()">Edit Profile</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+

@@ -24,7 +24,7 @@ export class UserService {
     return this.http.get<User[]>(this.apiUrl, { headers });
   }
 
-  getUserById(id: string): Observable<User> {
+  getUserByUsername(id: string): Observable<User> {
     const headers = this.getAuthHeaders();
     return this.http.get<User>(`${this.apiUrl}/${id}`, { headers });
   }

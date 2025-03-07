@@ -1,0 +1,66 @@
+.container {
+  margin-top: 60px;
+  margin-left: 120;
+}
+
+h2 {
+  color: #3f51b5 !important; /* Color del título con !important */
+}
+
+mat-card {
+  background-color: #fff !important; /* Fondo blanco para la tarjeta */
+  color: #000 !important; /* Color del texto dentro de la tarjeta */
+  padding: 20px; /* Añadir padding para asegurar espacio suficiente */
+  max-width: 600px; /* Limitar el ancho máximo de la tarjeta */
+}
+
+mat-card-header {
+  background-color: #3f51b5 !important; /* Fondo azul para el encabezado de la tarjeta */
+  color: #fff !important; /* Texto blanco en el encabezado de la tarjeta */
+}
+
+mat-card-content {
+  color: #000 !important; /* Color negro para el contenido de la tarjeta */
+  padding: 16px; /* Añadir padding para asegurar espacio suficiente */
+}
+
+mat-list-item {
+ 
+  border-bottom: 1px solid #e0e0e0 !important;
+  color: #000 !important; /* Color negro para los ítems de la lista */
+  padding: 16px 0 !important; /* Aumenta el espacio arriba y abajo */
+  border-bottom: 1px solid #e0e0e0 !important; /* Mantiene la línea divisoria */
+
+}
+
+mat-list-item h4, mat-list-item p {
+ 
+  min-height: 20px; /* Evita que se colapse */
+  color: #000 !important;
+  font-size: 16px; /* Asegurémonos de que los estilos se aplican */
+  margin: 0; /* Quitar margen para evitar desplazamientos */
+  padding: 10px 0; /* Añadir padding para asegurar espacio suficiente */
+}
+
+
+.text-container {
+  display: flex;
+  flex-direction: row; /* Fuerza que el h4 y el p estén uno debajo del otro */
+  gap: 4px; /* Agrega un pequeño espacio entre ellos */
+  margin: 20px 0px 20px 0px;
+}
+
+.mat-icon {
+  font-family: 'Material Icons' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+

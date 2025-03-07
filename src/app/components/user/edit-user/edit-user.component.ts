@@ -43,7 +43,7 @@ export class EditUserComponent implements OnInit {
   ngOnInit(): void {
     const username = this.route.snapshot.paramMap.get('username');
     console.log(' en edit-user ' + username)
-
+  
     if (username){
       this.userLoaded=true
       this.loadUserDataByUsername(username)
@@ -51,7 +51,7 @@ export class EditUserComponent implements OnInit {
   }
 
   loadUserDataByUsername(username: string): void {
-    this.userService.getUserById(username).subscribe(response => {
+    this.userService.getUserByUsername(username).subscribe(response => {
       this.user = response
     },
     error=>{
@@ -70,7 +70,7 @@ export class EditUserComponent implements OnInit {
 
     this.userLoaded = false;
 
-    this.userService.getUserById(userName).subscribe(
+    this.userService.getUserByUsername(userName).subscribe(
       (data) => {
         this.user = data;
         this.userLoaded = true;

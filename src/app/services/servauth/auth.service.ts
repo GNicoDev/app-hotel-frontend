@@ -43,4 +43,13 @@ export class AuthService {
   isLoggedIn(): Observable<boolean> {
     return this.loggedIn.asObservable();
   }
+
+
+  getUsername(): string | null {
+    return localStorage.getItem('username');
+  }
+
+  getUserRole(): string | null {
+    return localStorage.getItem('role');
+  }
 }
