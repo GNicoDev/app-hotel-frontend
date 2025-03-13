@@ -19,7 +19,7 @@ To get started with the project, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/hotel-project-frontend.git
+   git clone https://github.com/GNicoDev/app-hotel-frontend.git
 
 2. **Navigate to the project directory:**
    
