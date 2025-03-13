@@ -19,17 +19,17 @@ To get started with the project, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/GNicoDev/app-hotel-frontend.git
+     git clone https://github.com/GNicoDev/app-hotel-frontend.git
 
 2. **Navigate to the project directory:**
    
    ```bash
-  cd hotel-project-frontend
+      cd hotel-project-frontend
 
 3. **Install the dependencies:**
 
    ```bash
-  npm install
+    npm install
 
 ## Usage
 
