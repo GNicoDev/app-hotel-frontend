@@ -1,61 +1,149 @@
 <header>
   <nav>
     <mat-toolbar color="primary" class="menu">
-      <span>HOTEL</span>
+      <div>
+        <mat-icon class="logo-icon">hotel</mat-icon>
+        <span class="logo-text">HOTEL</span>
+      </div>
+      
       <span class="spacer"></span>
-      <button mat-button [matMenuTriggerFor]="menu" *ngIf="isLoggedIn">Menu</button>
-      <mat-menu #menu="matMenu" class="menu">
-        <button mat-menu-item [routerLink]="['home']">Home</button>
-        <button mat-menu-item [matMenuTriggerFor]="clientMenu">Clients</button>
-        <button mat-menu-item [matMenuTriggerFor]="roomsMenu">Rooms</button>
-        <button mat-menu-item [routerLink]="['/checkin']">Book</button>
-      </mat-menu>
-      <button mat-button *ngIf="userRole === 'ADMIN' && isLoggedIn" [matMenuTriggerFor]="userMenu">Users</button>
 
-      <button mat-button [routerLink]="['/login']" *ngIf="!isLoggedIn">Login</button>
-      <button mat-icon-button [matMenuTriggerFor]="accountMenu" *ngIf="isLoggedIn">
-        <mat-icon>account_circle</mat-icon>
+      <div class="nav-buttons" *ngIf="isLoggedIn">
+        <button mat-button [matMenuTriggerFor]="menu" class="nav-button">
+          <mat-icon>menu</mat-icon>
+          <span>Menu</span>
+        </button>
+        
+        <button mat-button *ngIf="userRole === 'ADMIN'" [matMenuTriggerFor]="userMenu" class="nav-button">
+          <mat-icon>admin_panel_settings</mat-icon>
+          <span>Users</span>
+        </button>
+
+        <button mat-icon-button [matMenuTriggerFor]="accountMenu" class="account-button">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </div>
+
+      <button mat-button [routerLink]="['/login']" *ngIf="!isLoggedIn" class="login-button">
+        <mat-icon>login</mat-icon>
+        <span>Login</span>
       </button>
-      <mat-menu #accountMenu="matMenu">
-        <button mat-menu-item [routerLink]="['/user-profile']">Profile</button>
-        <button mat-menu-item (click)="logout()">Logout</button>
-      </mat-menu>
     </mat-toolbar>
   </nav>
 
-  <!-- Submenu for Clients -->
-  <mat-menu #clientMenu="matMenu">
-    <button mat-menu-item [routerLink]="['/create-customer']">Create</button>
-    <button mat-menu-item [routerLink]="['/edit-customer']">Edit</button>
-    <button mat-menu-item [routerLink]="['/delete-customer']" *ngIf="userRole === 'ADMIN'">Delete</button>
-    <button mat-menu-item [matMenuTriggerFor]="findClients">Find</button>
+  <!-- Main Menu -->
+  <mat-menu #menu="matMenu" class="custom-menu">
+    <button mat-menu-item [routerLink]="['home']">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="clientMenu">
+      <mat-icon>people</mat-icon>
+      <span>Clients</span>
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="roomsMenu">
+      <mat-icon>king_bed</mat-icon>
+      <span>Rooms</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/checkin']">
+      <mat-icon>event_available</mat-icon>
+      <span>Book</span>
+    </button>
   </mat-menu>
 
-  <!-- Submenu for find Clients -->
-  <mat-menu #findClients="matMenu">
-    <button mat-menu-item [routerLink]="['/customers']">All clients</button>
-    <button mat-menu-item [routerLink]="['/customer-by-passport']">By Passport</button>
+  <!-- Client Submenu -->
+  <mat-menu #clientMenu="matMenu" class="custom-menu">
+    <button mat-menu-item [routerLink]="['/create-customer']">
+      <mat-icon>person_add</mat-icon>
+      <span>Create</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/edit-customer']">
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/delete-customer']" *ngIf="userRole === 'ADMIN'">
+      <mat-icon>person_remove</mat-icon>
+      <span>Delete</span>
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="findClients">
+      <mat-icon>search</mat-icon>
+      <span>Find</span>
+    </button>
   </mat-menu>
 
-  <!-- Submenu for Rooms -->
-  <mat-menu #roomsMenu="matMenu">
-    <button mat-menu-item [routerLink]="['/create-room']" *ngIf="userRole === 'ADMIN'">Create</button>
-    <button mat-menu-item [routerLink]="['/edit-room']" *ngIf="userRole === 'ADMIN'">Edit</button>
-    <button mat-menu-item [routerLink]="['/delete-room/']" *ngIf="userRole === 'ADMIN'">Delete</button>
-    <button mat-menu-item [matMenuTriggerFor]="findRooms">Find</button>
+  <!-- Find Clients Submenu -->
+  <mat-menu #findClients="matMenu" class="custom-menu">
+    <button mat-menu-item [routerLink]="['/customers']">
+      <mat-icon>group</mat-icon>
+      <span>All clients</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/customer-by-passport']">
+      <mat-icon>badge</mat-icon>
+      <span>By Passport</span>
+    </button>
   </mat-menu>
 
-  <!-- Submenu for find Rooms -->
-  <mat-menu #findRooms="matMenu">
-    <button mat-menu-item [routerLink]="['/rooms']">All rooms</button>
-    <button mat-menu-item [routerLink]="['/room-by-number']">By number</button>
+  <!-- Rooms Submenu -->
+  <mat-menu #roomsMenu="matMenu" class="custom-menu">
+    <button mat-menu-item [routerLink]="['/create-room']" *ngIf="userRole === 'ADMIN'">
+      <mat-icon>add_home</mat-icon>
+      <span>Create</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/edit-room']" *ngIf="userRole === 'ADMIN'">
+      <mat-icon>edit_home</mat-icon>
+      <span>Edit</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/delete-room/']" *ngIf="userRole === 'ADMIN'">
+      <mat-icon>delete_home</mat-icon>
+      <span>Delete</span>
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="findRooms">
+      <mat-icon>search</mat-icon>
+      <span>Find</span>
+    </button>
   </mat-menu>
 
-   <!-- Submenu for Users (accessible only by admins) -->
-   <mat-menu #userMenu="matMenu">
-    <button mat-menu-item [routerLink]="['/users/new']">Create</button>
-    <button mat-menu-item [routerLink]="['/users/edit']">Edit</button>
-    <button mat-menu-item [routerLink]="['/users/delete']">Delete</button>
-    <button mat-menu-item [routerLink]="['/users']">All Users</button>
+  <!-- Find Rooms Submenu -->
+  <mat-menu #findRooms="matMenu" class="custom-menu">
+    <button mat-menu-item [routerLink]="['/rooms']">
+      <mat-icon>apartment</mat-icon>
+      <span>All rooms</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/room-by-number']">
+      <mat-icon>tag</mat-icon>
+      <span>By number</span>
+    </button>
+  </mat-menu>
+
+  <!-- User Menu -->
+  <mat-menu #userMenu="matMenu" class="custom-menu">
+    <button mat-menu-item [routerLink]="['/users/new']">
+      <mat-icon>person_add</mat-icon>
+      <span>Create</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/users/edit']">
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/users/delete']">
+      <mat-icon>person_remove</mat-icon>
+      <span>Delete</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/users']">
+      <mat-icon>group</mat-icon>
+      <span>All Users</span>
+    </button>
+  </mat-menu>
+
+  <!-- Account Menu -->
+  <mat-menu #accountMenu="matMenu" class="custom-menu">
+    <button mat-menu-item [routerLink]="['/user-profile']">
+      <mat-icon>person</mat-icon>
+      <span>Profile</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
   </mat-menu>
 </header>
