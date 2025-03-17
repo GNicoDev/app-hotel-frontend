@@ -7,12 +7,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'; // Importar MatSnackBar
+import { MatSnackBarModule } from '@angular/material/snack-bar'; // Importar MatSnackBar
 import { ServRoomService } from '../../../../services/servroom/servroom.service'; 
 import { Room } from '../../../../modells/room'; 
 import { Router } from '@angular/router';
 import { ServhotelService } from '../../../../services/servhotel/servhotel.service';
 import { Customer } from '../../../../modells/customer';
+import { AuthService } from '../../../../services/servauth/auth.service';
+import { MessageService } from '../../../../services/servmessage/message.service';
 
 @Component({
   selector: 'app-find-all-rooms',
@@ -34,17 +36,26 @@ import { Customer } from '../../../../modells/customer';
 export class FindAllRoomsComponent implements OnInit {
   availableRooms: Room[] = [];
   filteredRooms: Room[] = [];
+  isLoggedIn: boolean = false;
+  userRole: string | null = '';
   searchTerm: string = '';
   displayedColumns: string[] = ['roomNumber', 'roomType', 'pricePerNight', 'guestCount', 'check-in', 'check-out', 'actions'];
 
   constructor(
     private roomService: ServRoomService,
+    private authService : AuthService,
     private router: Router,
     private servHotel: ServhotelService,
-    private snackBar: MatSnackBar // Asegúrate de inyectar MatSnackBar
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
+    this.authService.isLoggedIn().subscribe(status => {
+      this.isLoggedIn = status;
+      if (status) {
+        this.userRole = localStorage.getItem('role');
+      }
+    });
     this.getAllRooms();
   }
 
@@ -84,12 +95,12 @@ export class FindAllRoomsComponent implements OnInit {
       this.servHotel.checkOut(roomNumber).subscribe(
         (response) => {
           console.log('Check-out successful:', response);
-          this.showSnackbar('Check-out successful', 'Close');
+          this.messageService.showSnackbar('Check-out successful', 'Close');
           this.router.navigate(['/']);
         },
         (error) => {
           console.error('Error during check-out:', error);
-          this.showSnackbar('Error during check-out. Please try again.', 'Close');
+          this.messageService.showSnackbar('Error during check-out. Please try again.', 'Close');
         }
       );
     }
@@ -99,11 +110,4 @@ export class FindAllRoomsComponent implements OnInit {
     this.router.navigate(['/customer-by-passport'], { queryParams: { roomId } });
   }
   
-
-  showSnackbar(message: string, action: string): void {
-    this.snackBar.open(message, action, {
-      duration: 4000,
-      verticalPosition: 'top',
-    });
-  }
 }

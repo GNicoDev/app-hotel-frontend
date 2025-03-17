@@ -9,7 +9,7 @@ import { Customer } from '../../modells/customer';
 export class ServhotelService {
 
 
-  Url='http://localhost:8080/hotel';
+  Url='http://localhost:8081/hotel';
 
   constructor(private http : HttpClient) { }
 

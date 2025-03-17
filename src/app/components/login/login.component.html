@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>Login</h2>
+    <form (ngSubmit)="login()" class="forms" autocomplete="off">
+      <mat-form-field class="form-field">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="credentials.username" name="new-username" required autocomplete="off">
+      </mat-form-field>
+      
+      <mat-form-field class="form-field">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" [(ngModel)]="credentials.password" name="new-password" required autocomplete="off">
+      </mat-form-field>
+
+      <div class="btn-submit">
+      <button mat-raised-button color="primary" type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+  

@@ -6,22 +6,25 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'; // FormsModule for ngModel
+import { FormsModule } from '@angular/forms';
 import { ServCustomerService } from '../../../../services/servcustomer/servcustomer.service';
 import { Customer } from '../../../../modells/customer';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../../services/servauth/auth.service';
 
 @Component({
   selector: 'app-find-all-customer',
   standalone: true,
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     HttpClientModule,
-    FormsModule, // Import FormsModule for ngModel
+    FormsModule,
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule],
+    MatIconModule
+  ],
   templateUrl: './find-all-customer.component.html',
   styleUrls: ['./find-all-customer.component.css']
 })
@@ -29,13 +32,21 @@ export class FindAllCustomerComponent implements OnInit {
   customersList: Customer[] = [];
   filteredCustomers: Customer[] = [];
   searchTerm: string = '';
-  displayedColumns: string[] = [ 'lastName','name', 'passport', 'phone', 'actions'];
+  displayedColumns: string[] = ['lastName', 'name', 'passport', 'phone', 'actions'];
+  userRole: string | null = '';
 
   constructor(
     private customerService: ServCustomerService,
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.authService.isLoggedIn().subscribe(status => {
+      if (status) {
+        this.userRole = localStorage.getItem('role');
+      }
+    });
     this.getAllCustomers();
   }
 
@@ -43,7 +54,7 @@ export class FindAllCustomerComponent implements OnInit {
     this.customerService.getCustomers().subscribe(
       (customers: Customer[]) => {
         this.customersList = customers;
-        this.applyFilter(); // Filter customers initially
+        this.applyFilter(); // Filtrar clientes inicialmente
       },
       (error) => {
         console.error('Error fetching customers:', error);

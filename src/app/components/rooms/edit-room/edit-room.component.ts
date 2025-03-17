@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MessageService } from '../../../services/servmessage/message.service';
 
 @Component({
   selector: 'app-edit-room',
@@ -34,7 +35,7 @@ export class EditRoomComponent implements OnInit{
     private route : ActivatedRoute,
     private router: Router,
     private servRoom: ServRoomService,
-    private snackBar: MatSnackBar
+    private messageService: MessageService
   ) { }
 
  ngOnInit(): void { 
@@ -51,7 +52,7 @@ export class EditRoomComponent implements OnInit{
       this.roomLoaded = true;
      }, 
      (error) => { 
-        this.showSnackbar('Error loading room: Room ID does not exist', 'Close'); 
+        this.messageService.showSnackbar('Error loading room: Room ID does not exist', 'Close'); 
         console.error('Error loading room:', error); 
       } );
    }
@@ -59,7 +60,7 @@ export class EditRoomComponent implements OnInit{
   loadRoomData(): void {
     this.roomId = Number(this.room.id);
     if (isNaN(this.roomId) || this.roomId <= 0) {
-      this.showSnackbar('Please enter a valid Room ID', 'Close');
+      this.messageService.showSnackbar('Please enter a valid Room ID', 'Close');
       return;
     }
 
@@ -72,7 +73,7 @@ export class EditRoomComponent implements OnInit{
         console.log('Room data loaded:', room)
       },
         (error) => {
-          this.showSnackbar('Error editing room: Room ID does not exist', 'Close');
+          this.messageService.showSnackbar('Error editing room: Room ID does not exist', 'Close');
           console.error('Error deleting room:', error);
         }
       );
@@ -82,7 +83,7 @@ export class EditRoomComponent implements OnInit{
   saveChanges(): void {
     if (this.roomId !== null) {
       if (isNaN(this.room.roomNumber) || !Number.isInteger(this.room.roomNumber) || this.room.roomNumber <= 0) {
-        this.showSnackbar('Please enter a valid Room Number', 'Close'); return;
+        this.messageService.showSnackbar('Please enter a valid Room Number', 'Close'); return;
       }
       const roomData = {
         id: this.roomId,
@@ -95,27 +96,20 @@ export class EditRoomComponent implements OnInit{
       };
       console.log(roomData)
       this.servRoom.updateRoom(roomData, this.roomId).subscribe(() => {
-        this.showSnackbar('Room edited successfully', 'Close'); this.router.navigate(['/']); 
+        this.messageService.showSnackbar('Room edited successfully', 'Close'); this.router.navigate(['/']); 
       }, (error) => {
         if (error.status === 409) {
-          this.showSnackbar('Error editing room: Room number already exists', 'Close');
+          this.messageService.showSnackbar('Error editing room: Room number already exists', 'Close');
         } else if (error.status === 400) {
-          this.showSnackbar('Error editing room: Invalid room data', 'Close');
+          this.messageService.showSnackbar('Error editing room: Invalid room data', 'Close');
         } else {
-          this.showSnackbar('Unexpected error occurred', 'Close');
+          this.messageService.showSnackbar('Unexpected error occurred', 'Close');
 
         } console.error('Error editing room:', error);
       });
     }
   }
 
-  showSnackbar(message: string, action: string): void {
-    this.snackBar.open(message, action, {
-      duration: 4000,
-      verticalPosition: 'top',
-    }
-    );
-  }
 
   goHome(){
     this.router.navigate(['/'])

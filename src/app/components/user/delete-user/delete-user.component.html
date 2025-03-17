@@ -1,0 +1,14 @@
+<section class="container">
+    <h2>Delete User</h2>
+    <form (ngSubmit)="deleteUser()" class="forms">
+      <mat-form-field class="form-field">
+        <mat-label>User ID</mat-label>
+        <input matInput [(ngModel)]="userId" name="userId" required>
+      </mat-form-field>
+      <div class="btn-submit">
+        <button mat-raised-button color="warn" type="submit">Delete</button>
+        <button mat-raised-button color="primary" type="button" class="btn-cancel" (click)="goHome()">Cancel</button>
+      </div>
+    </form>
+  </section>
+  

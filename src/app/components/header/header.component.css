@@ -1,9 +1,47 @@
 .spacer {
     flex: 1 1 auto;
-    opacity: 0.5;
+  }
 
+  .account-button{
+    margin-left: 10px;
+    margin-top: 5px;
   }
 
   .menu{
-    opacity: 0.7;
+    opacity: 0.8;
   }
+
+  .logged-user {
+    font-size: 1rem; /* Tamaño más grande */
+    margin-right: 400px;
+
+  }
+  
+  .username {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;    font-size: 1rem;
+    font-style: italic; /* Cursiva */
+    font-size: 0.9rem;
+  }
+  
+  .nav-button{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+  }
+
+  .logo-icon{
+    font-size: 28px;
+    margin-left: 10px;
+    margin-right: 25px;
+    margin-top: 5px;
+   
+  }
+
+  .logo-text{
+    margin-bottom: 10px;
+  }
+
+
+

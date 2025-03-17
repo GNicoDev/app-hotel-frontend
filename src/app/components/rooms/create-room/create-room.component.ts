@@ -5,14 +5,24 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { Room } from '../../../modells/room'; 
 import { ServRoomService } from '../../../services/servroom/servroom.service'; 
 import { Router } from '@angular/router';
+import { MessageService } from '../../../services/servmessage/message.service';
 
 @Component({
   selector: 'app-create-room',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule],
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatButtonModule, 
+    MatSelectModule, 
+    MatSnackBarModule
+  ],
   templateUrl: './create-room.component.html',
   styleUrl: './create-room.component.css'
 })
@@ -22,7 +32,8 @@ export class CreateRoomComponent {
 
   constructor(
     private servRoom: ServRoomService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {
   }
 
@@ -35,11 +46,11 @@ export class CreateRoomComponent {
     };
     console.log(roomData)
     this.servRoom.saveRoom(roomData).subscribe(response => {
-      console.log('Room created successfully', response.body);
+      this.messageService.showSnackbar('Room created successfully', 'Close')
       this.createdRoom = response.body; // Store the created room 
     },
       error => {
-        console.error('Error creating room', error);
+        this.messageService.showSnackbar('Error creating room. ' + error, 'Close')
       });
   }
 

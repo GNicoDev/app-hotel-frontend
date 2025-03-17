@@ -11,9 +11,17 @@ import { FindAllCustomerComponent } from './components/customer/find/find-all-cu
 import { EditCustomerComponent } from './components/customer/edit-customer/edit-customer.component';
 import { DeleteCustomerComponent } from './components/customer/delete-customer/delete-customer.component';
 import { FindCustomerBypassportComponent } from './components/customer/find/find-customer-bypassport/find-customer-bypassport.component';
+import { LoginComponent } from './components/login/login.component';
+import { FindAllUsersComponent } from './components/user/find/find-all-users/find-all-users/find-all-users.component';
+import { CreateUserComponent } from './components/user/create-user/create-user.component';
+import { DeleteUserComponent } from './components/user/delete-user/delete-user.component';
+import { EditUserComponent } from './components/user/edit-user/edit-user.component';
+import { FindUserByUsernameComponent} from './components/user/find/find-user-by-username/find-user-by-username.component';
 
 export const routes: Routes = [
-    { path : '', component: HomeComponent},
+    { path: '', component: HomeComponent},
+    { path: 'home', component: HomeComponent},
+
     { path: 'create-room', component: CreateRoomComponent },
     { path: 'edit-room', component: EditRoomComponent },
     { path: 'edit-room/:id', component: EditRoomComponent },
@@ -32,5 +40,14 @@ export const routes: Routes = [
 
     { path: 'checkin', component: CheckinComponent }, 
     { path: 'checkin/:roomId', component: CheckinComponent }, 
-    
+
+    { path: 'users', component: FindAllUsersComponent},
+    { path: 'users/new', component: CreateUserComponent },
+    { path: 'users/delete', component: DeleteUserComponent },
+    { path: 'users/edit', component: EditUserComponent },
+    { path: 'users/edit/:username', component: EditUserComponent },
+    { path: 'user-profile', component: FindUserByUsernameComponent },
+
+    { path: 'login', component: LoginComponent },
+   // { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirigir a la página de login por defecto
 ];
